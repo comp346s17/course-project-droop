@@ -1,0 +1,8 @@
+#canvas {
+    border-color: rgb(0, 0, 0);
+    border-width: 1px;
+    border-style: solid;
+    position: absolute;
+    left: 50px;
+    top: 150px;
+}
