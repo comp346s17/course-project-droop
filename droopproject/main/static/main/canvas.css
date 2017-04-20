@@ -5,12 +5,16 @@ html, body {
 }
 
 button {
-    padding: 0.5em;
+    margin: 0.1em;
 }
 
 .content-area {
     display: inline-block;
     padding-right: 1em;
+}
+
+.currently-used {
+    background-color: rgb(231, 237, 114)
 }
 
 #canvasArea {
@@ -28,6 +32,7 @@ button {
 
 #controlArea {
     margin: 0 auto;
+    padding-left: 8.5em;
 }
 
 #prompt {

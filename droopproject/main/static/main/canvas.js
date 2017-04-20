@@ -23,6 +23,11 @@ var clickY = new Array();
 var clickDrag = new Array();
 //
 
+//Currently Pressed Buttons
+var currColorButton = "black"
+var currToolButton = "marker"
+var currLineSizeButton = "regular"
+
 $('#clear').click(function() {
     //Clears the canvas & reset arrays
 
@@ -37,29 +42,34 @@ $('#clear').click(function() {
 
 //Changing all the colors
 $(".color").click(function() {
-    this.focus()
     curColor = this.id //Using built in Javascript colors
-})
-//
-
-//Changing all the line Sizes, Refactor into one function where each button shares a class 'draw-size'
-$(".draw-size").click(function() {
-    curLineSize = lineSizes[this.id]
-})
+    $("#"+currColorButton).toggleClass("currently-used")
+    $(this).toggleClass("currently-used")
+    currColorButton = this.id
+});
 //
 
 //Changing the tools
-$(".color").click(function(){
-    if (curTool == "eraser"){
-        curTool = "marker"
-    }
-});
+$(".tool").click(function() {
+    $("#"+currToolButton).toggleClass("currently-used")
+    $(this).toggleClass("currently-used")
+    currToolButton = this.id
+})
 $('#marker').click(function(){
     curTool = "marker";
 });
 $('#eraser').click(function(){
     curTool = "eraser";
 });
+//
+
+//Changing all the line Sizes, Refactor into one function where each button shares a class 'draw-size'
+$(".draw-size").click(function() {
+    curLineSize = lineSizes[this.id]
+    $("#"+currLineSizeButton).toggleClass("currently-used")
+    $(this).toggleClass("currently-used")
+    currLineSizeButton = this.id
+})
 //
 
 $("#btnSave").bind("click", function () {
