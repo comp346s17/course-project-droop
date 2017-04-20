@@ -1,4 +1,18 @@
 <h2>Welcome to Droop</h2>
 <p>Droop allows you to collaboratively create drawings. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
 
-<h5>Featured Drawings</h5>
+<h3>Featured Drawings</h3>
+
+<div class="drawings-display">
+    <div class="row drawings-row">
+        <div ng-repeat="drawing in featuredDrawings">
+            <div class="clearfix" ng-if="$index % 3 == 0"></div>
+            <div class="col-sm-4">
+                {{drawing.title}}
+                <img class="gallery-image" src="{{drawing.imageUrl}}">
+                <a href="#!/gallery/{{drawing.id}}"><button>View</button></a>
+
+            </div>
+        </div>
+    </div>
+</div>
