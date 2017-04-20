@@ -22,31 +22,31 @@ droopApp.config(function($routeProvider, $httpProvider, $resourceProvider) {
 });
 
 droopApp.component('home', {
-  templateUrl: 'static/main/home.template.html',
+  templateUrl: 'static/main/templates/home.template.html',
   controller: function($scope) {
     }
 });
 
 droopApp.component('drawingCanvas', {
-  templateUrl: 'static/main/canvas.template.html',
+  templateUrl: 'static/main/templates/canvas.template.html',
   controller: function($scope) {
     }
 });
 
 droopApp.component('drawingDetail', {
-  templateUrl: 'static/main/drawing-detail.template.html',
+  templateUrl: 'static/main/templates/drawing-detail.template.html',
   controller: function($scope) {
     }
 });
 
 droopApp.component('drawingGallery', {
-  templateUrl: 'static/main/gallery.template.html',
+  templateUrl: 'static/main/templates/gallery.template.html',
   controller: function($scope) {
     }
 });
 
 droopApp.component('droopNavbar', {
-  templateUrl: 'static/main/navbar.template.html',
+  templateUrl: 'static/main/templates/navbar.template.html',
   controller: function($scope) {
     }
 });
