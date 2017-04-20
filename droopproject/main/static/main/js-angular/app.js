@@ -1,4 +1,4 @@
-var droopApp = angular.module('droopApp', ['ngRoute', 'ngResource']);
+var droopApp = angular.module('droopApp', ['droopApp.controllers', 'droopApp.services', 'ngRoute', 'ngResource']);
 
 droopApp.config(function($routeProvider, $httpProvider, $resourceProvider) {
   $routeProvider.
