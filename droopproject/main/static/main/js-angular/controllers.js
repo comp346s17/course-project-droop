@@ -26,6 +26,17 @@
 
       $scope.drawings = DrawingsService.getDrawings();
 
+      $scope.likeDrawing = function(drawing) {
+        drawing.liked = true;
+        drawing.likes += 1;
+      };
+
+      $scope.unlikeDrawing = function(drawing) {
+        drawing.liked = false;
+        drawing.likes -= 1;
+      };
+
+
       }
   })
 

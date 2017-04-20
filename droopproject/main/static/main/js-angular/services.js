@@ -11,6 +11,7 @@ angular.module('droopApp.services', [])
 
     for (var i = 0; i < 20; i++) {
       var drawing = {
+        id: i,
         title: 'Emerald Dream',
         createdAt: dateNow,
         likes: 420,
@@ -22,7 +23,8 @@ angular.module('droopApp.services', [])
           'Brian Rosenberg',
           'Donkey Kong'
         ],
-        collection: 'Nature'
+        collection: 'Nature',
+        liked: false
       };
       drawings.push(drawing);
     }
