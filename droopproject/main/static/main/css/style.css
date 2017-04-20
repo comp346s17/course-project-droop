@@ -26,3 +26,11 @@ a:hover {
 .gallery-image {
   width: 80%;
 }
+
+.nav-button {
+    margin-left: 1em;
+}
+
+.nav-first-button{
+    margin-left: 60em;
+}
