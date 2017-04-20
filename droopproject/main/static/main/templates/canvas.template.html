@@ -1,25 +1,26 @@
-<link rel="stylesheet" type="text/css" href="/static/main/style.css">
 <link rel="stylesheet" type="text/css" href="/static/main/canvas.css">
+<div id="controlArea">
+    <h3 id="prompt"> Add a Palm Tree! </h3>
+    <div id="colorArea" class="content-area">
+        Pick a color: <span><button id="black" class="color">Black</button><button id="red" class="color">Red</button><button id="purple" class="color">Purple</button><button id="green" class="color">Green</button><button id="yellow" class="color">Yellow</button><button id="brown" class="color">Brown</button></span></br>
+    </div>
+    <div id="toolArea" class="content-area">
+        Pick a tool: <span><button id="marker">Marker</button><button id="eraser">Eraser</button></span></br>
+    </div>
+    <div id="drawSizeArea" class="content-area">
+        Pick a drawing size: <span><button id="small" class="draw-size">Small</button><button id="regular" class="draw-size">Regular</button><button id="large" class="draw-size">Large</button><button id="extraLarge" class="draw-size">Extra Large</button><button id="bigBertha" class="draw-size">Big Bertha</button></span></br>
+    </div>
+    <div id="clearArea" class="content-area">
+        Clear the canvas: <button id="clear">Clear</button> </br>
+    </div>
+</div>
 
-<div id="colorArea" class="content-area">
-    Pick a color: <span><button id="black" class="color">Black</button><button id="red" class="color">Red</button><button id="purple" class="color">Purple</button><button id="green" class="color">Green</button><button id="yellow" class="color">Yellow</button><button id="brown" class="color">Brown</button></span></br>
-</div>
-<div id="toolArea" class="content-area">
-    Pick a tool: <span><button id="marker">Marker</button><button id="eraser">Eraser</button></span></br>
-</div>
-<div id="drawSizeArea" class="content-area">
-    Pick a drawing size: <span><button id="small" class="draw-size">Small</button><button id="regular" class="draw-size">Regular</button><button id="large" class="draw-size">Large</button><button id="extraLarge" class="draw-size">Extra Large</button><button id="bigBertha" class="draw-size">Big Bertha</button></span></br>
-</div>
-<div id="clearArea" class="content-area">
-    Clear the canvas: <button id="clear">Clear</button> </br>
-</div>
 
-<h3 id="prompt"> Add a Palm Tree! </h3>
 <!-- <a href="base64" download="myImage">Click here to download image</a> -->
 
 <div id="canvasArea">
     <canvas id="canvas"></canvas>
-    <img id = "img" alt = ""/>-->
+    <img id = "img" alt = ""/>
 </div>
 <input type="button" id="btnSave" value="Save as Image" />
 <script type="text/javascript" src="static/main/canvas.js"></script>
