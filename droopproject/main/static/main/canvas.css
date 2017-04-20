@@ -4,9 +4,13 @@ html, body {
   margin: 0px;
 }
 
+button {
+    padding: 0.5em;
+}
+
 .content-area {
     display: inline-block;
-    padding-right: 3em;
+    padding-right: 1em;
 }
 
 #canvasArea {
@@ -19,11 +23,16 @@ html, body {
     border-style: solid;
     position: absolute;
     left: 5%;
-    top: 35%;
+    top: 30%;
+}
+
+#controlArea {
+    margin: 0 auto;
 }
 
 #prompt {
     text-align: center;
+    padding-bottom: 1em;
 }
 
 #img {
@@ -37,6 +46,6 @@ html, body {
 #btnSave {
     position: absolute;
     left: 50%;
-    top: 90%;
+    top: 93%;
     text-align: center;
 }

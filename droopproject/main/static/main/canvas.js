@@ -9,7 +9,7 @@ var curColor = "black"
 var clickColor = new Array();
 
 //Line sizes
-var lineSizes = {"small": 2, "regular": 5, "large": 10, "extraLarge": 15, "bigBertha": 45}
+var lineSizes = {"small": 2, "regular": 5, "large": 10, "extraLarge": 15, "bigBertha": 40}
 var curLineSize = lineSizes["regular"]
 var clickSize = new Array();
 
