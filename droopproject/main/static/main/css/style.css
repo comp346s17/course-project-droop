@@ -10,6 +10,13 @@ a:hover {
   text-decoration: none !important;
 }
 
+.navbar-nav > li > a{
+  padding: 10px !important;
+}
+
+.nav-content {
+  margin: 0 2%;
+}
 
 .home-top {
   margin: 0 3%;
@@ -41,12 +48,4 @@ a:hover {
 
 .gallery-image {
   width: 80%;
-}
-
-.nav-button {
-    margin-left: 1em;
-}
-
-.nav-first-button{
-    margin-left: 60em;
 }
