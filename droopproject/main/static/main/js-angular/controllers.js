@@ -19,7 +19,7 @@
     controller: function($scope, PromptService) {
         var prompt = PromptService.getPrompt();
 
-        $scope.featuredPrompt = prompt
+        $scope.featuredPrompt = prompt;
     }
   })
 

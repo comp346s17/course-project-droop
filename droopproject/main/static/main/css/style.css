@@ -10,6 +10,11 @@ a:hover {
   text-decoration: none !important;
 }
 
+.home-top {
+  margin: 10%;
+}
+
+
 .gallery-top {
   margin-left: 40px;
 }
