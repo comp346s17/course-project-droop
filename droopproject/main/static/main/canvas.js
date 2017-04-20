@@ -45,6 +45,15 @@ $(".color").click(function() {
     curColor = this.id //Using built in Javascript colors
     $("#"+currColorButton).toggleClass("currently-used")
     $(this).toggleClass("currently-used")
+
+    if (curTool == "eraser") {
+        console.log("Changing to a marker.")
+        curTool = "marker"
+        $("#"+currToolButton).toggleClass("currently-used")
+        currToolButton = "marker"
+        $("#"+currToolButton).toggleClass("currently-used")
+    }
+
     currColorButton = this.id
 });
 //
@@ -81,7 +90,7 @@ $("#btnSave").bind("click", function () {
 })
 
 function addClick(x, y, dragging){
-    //Called whenever the user clicks on the canvas adds x,y,drag and pushed color or white if eraser
+    //Called whenever the user clicks on the canvas adds x,y,drag and pushed color or white if erased
 
     clickX.push(x);
     clickY.push(y);
