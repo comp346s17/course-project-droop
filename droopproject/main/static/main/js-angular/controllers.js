@@ -16,7 +16,10 @@
 
   .component('drawingCanvas', {
     templateUrl: 'static/main/templates/canvas.template.html',
-    controller: function($scope) {
+    controller: function($scope, PromptService) {
+        var prompt = PromptService.getPrompt();
+
+        $scope.featuredPrompt = prompt
     }
   })
 
