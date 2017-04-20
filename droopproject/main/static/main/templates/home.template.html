@@ -13,9 +13,8 @@
         <div ng-repeat="drawing in featuredDrawings">
             <div class="clearfix drawings-row" ng-if="$index % 3 == 0"></div>
             <div class="col-sm-4">
-                <a href="#!/gallery/{{drawing.id}}">{{drawing.title}}</a>
-                <img class="gallery-image" src="{{drawing.imageUrl}}">
-                <!-- <a href="#!/gallery/{{drawing.id}}"><button>View</button></a> -->
+              <a href="#!/gallery/{{drawing.id}}">{{drawing.title}}</a>
+              <img class="gallery-image" src="{{drawing.imageUrl}}">
             </div>
         </div>
     </div>

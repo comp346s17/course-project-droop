@@ -14,6 +14,12 @@ a:hover {
   padding: 10px !important;
 }
 
+.navbar {
+  border: 3px solid #54acea;
+  border-radius: 2%;
+}
+
+
 .nav-content {
   margin: 0 2%;
 }
@@ -39,13 +45,36 @@ a:hover {
 
 .drawings-display {
   margin: 20px;
-  padding: 20px;
+  padding: 40px;
 }
 
 .drawings-row {
   margin-bottom: 30px;
 }
 
+.gallery-drawing-container {
+  padding: 40px;
+}
+
 .gallery-image {
-  width: 80%;
+  width: 100%;
+}
+
+.like-icon {
+  float: right;
+  font-size: 20px;
+}
+
+.like-icon-focused {
+  font-size: 30px;
+  font-weight: bold;
+
+}
+
+.likes-label, .views-label {
+  font-size: 16px;
+}
+
+.views-label {
+  margin-left: 6px;
 }
