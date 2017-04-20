@@ -33,6 +33,9 @@ angular.module('droopApp.services', [])
 
       getDrawings: function() {
         return drawings;
+      },
+      getDrawing: function(id) {
+        return drawings[id];
       }
 
     };

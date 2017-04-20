@@ -22,8 +22,19 @@
 
   .component('drawingDetail', {
     templateUrl: 'static/main/templates/drawing-detail.template.html',
-    controller: function($scope) {
+    controller: function($scope, DrawingsService, $routeParams) {
 
+      $scope.drawing = DrawingsService.getDrawing($routeParams.id);
+
+      $scope.likeDrawing = function(drawing) {
+        drawing.liked = true;
+        drawing.likes += 1;
+      };
+
+      $scope.unlikeDrawing = function(drawing) {
+        drawing.liked = false;
+        drawing.likes -= 1;
+      };
     }
   })
 
