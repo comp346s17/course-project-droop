@@ -29,15 +29,16 @@
 
       $scope.drawing = DrawingsService.getDrawing($routeParams.id);
 
-      $scope.likeDrawing = function(drawing) {
-        drawing.liked = true;
-        drawing.likes += 1;
+      $scope.toggleDrawingLike = function(drawing) {
+        drawing.liked = !drawing.liked;
+        if (drawing.liked) {
+          drawing.likes += 1;
+        } else {
+          drawing.likes -= 1;
+        }
       };
 
-      $scope.unlikeDrawing = function(drawing) {
-        drawing.liked = false;
-        drawing.likes -= 1;
-      };
+
     }
   })
 
@@ -47,14 +48,13 @@
 
       $scope.drawings = DrawingsService.getDrawings();
 
-      $scope.likeDrawing = function(drawing) {
-        drawing.liked = true;
-        drawing.likes += 1;
-      };
-
-      $scope.unlikeDrawing = function(drawing) {
-        drawing.liked = false;
-        drawing.likes -= 1;
+      $scope.toggleDrawingLike = function(drawing) {
+        drawing.liked = !drawing.liked;
+        if (drawing.liked) {
+          drawing.likes += 1;
+        } else {
+          drawing.likes -= 1;
+        }
       };
 
     }

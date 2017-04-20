@@ -8,7 +8,6 @@
         <option>Most Viewed</option>
         <option>Most Liked</option>
     </select>
-
 </div>
 
 
@@ -16,16 +15,13 @@
     <div class="row drawings-row">
         <div ng-repeat="drawing in drawings">
             <div class="clearfix" ng-if="$index % 3 == 0"></div>
-            <div class="col-sm-4">
-                {{drawing.title}}
+            <div class="col-sm-4 gallery-drawing-container">
+                <a href="#!/gallery/{{drawing.id}}">{{drawing.title}}</a>
                 <img class="gallery-image" src="{{drawing.imageUrl}}">
                 <br />
-                {{drawing.likes}} Likes
-                {{drawing.views}} Views
-
-                <button ng-show="!drawing.liked" ng-click="likeDrawing(drawing)">Like</button>
-                <button ng-show="drawing.liked" ng-click="unlikeDrawing(drawing)">Unlike</button>
-                <a href="#!/gallery/{{drawing.id}}"><button>View</button></a>
+                <label class="likes-label">{{drawing.likes}} Likes</label>
+                <label class="views-label">{{drawing.views}} Views</label>
+                <a><span class="like-icon glyphicon glyphicon-thumbs-up" ng-class="{true: 'like-icon-focused'}[drawing.liked]" ng-click="toggleDrawingLike(drawing)"></span>
             </div>
         </div>
     </div>
