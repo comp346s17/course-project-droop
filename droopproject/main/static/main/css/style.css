@@ -10,10 +10,21 @@ a:hover {
   text-decoration: none !important;
 }
 
+
 .home-top {
-  margin: 10%;
+  margin: 0 3%;
+  text-align: center;
 }
 
+.home-top h1 {
+  color: #ff0000;
+  padding-bottom: 25px;
+}
+
+.home-top p {
+  font-size: 24px;
+  color: #54acea;
+}
 
 .gallery-top {
   margin-left: 40px;
@@ -21,11 +32,11 @@ a:hover {
 
 .drawings-display {
   margin: 20px;
-  padding: 0;
+  padding: 20px;
 }
 
 .drawings-row {
-  padding: 20px;
+  margin-bottom: 30px;
 }
 
 .gallery-image {
