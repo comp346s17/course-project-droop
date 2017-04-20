@@ -4,13 +4,22 @@ html, body {
   margin: 0px;
 }
 
+.content-area {
+    display: inline-block;
+    padding-right: 3em;
+}
+
+#canvasArea {
+    display: block;
+}
+
 #canvas {
     border-color: rgb(0, 0, 0);
     border-width: 1px;
     border-style: solid;
     position: absolute;
     left: 5%;
-    top: 150px;
+    top: 35%;
 }
 
 #prompt {
@@ -23,4 +32,11 @@ html, body {
     position: absolute;
     left: 50px;
     top: 150px;
+}
+
+#btnSave {
+    position: absolute;
+    left: 50%;
+    top: 90%;
+    text-align: center;
 }

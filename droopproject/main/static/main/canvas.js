@@ -1,6 +1,6 @@
 var context = $("#canvas").get(0).getContext("2d");
 context.canvas.width = window.innerWidth * .9;
-context.canvas.height = window.innerHeight * .75;
+context.canvas.height = window.innerHeight * .6;
 var painting;
 
 // Keeping track of latest used colors,  sizes, tools, locations
@@ -37,6 +37,7 @@ $('#clear').click(function() {
 
 //Changing all the colors
 $(".color").click(function() {
+    this.focus()
     curColor = this.id //Using built in Javascript colors
 })
 //
