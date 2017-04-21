@@ -78,3 +78,32 @@ a:hover {
 .views-label {
   margin-left: 6px;
 }
+
+.detailInfo {
+    display: inline-block;
+    margin-top: 1.5em;
+    padding-bottom: 5em;
+}
+
+.info-block {
+    display: inline-block;
+    width: 25%;
+}
+
+.info-block:first-child {
+    margin-right: 3em;
+}
+
+.detail-heading {
+    margin-bottom: 1em;
+}
+
+#detailContainer {
+    margin-top: 2em;
+    margin-left: 4em;
+    text-align: center;
+}
+
+#detail-image {
+    margin-bottom: 2em;
+}
