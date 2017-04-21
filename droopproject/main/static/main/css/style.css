@@ -54,12 +54,16 @@ a:hover {
   padding: 10px 40px;
 }
 
+.gallery-drawings-display {
+  padding-top: 30px !important;
+}
+
 .drawings-row {
   margin-bottom: 30px;
 }
 
 .gallery-drawing-container {
-  padding: 0px 40px 80px 40px;
+  padding: 0px 40px 60px 40px;
 }
 
 .gallery-image {
