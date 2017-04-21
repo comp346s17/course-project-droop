@@ -63,7 +63,9 @@
   .component('droopNavbar', {
     templateUrl: 'static/main/templates/navbar.template.html',
     controller: function($scope) {
-      }
+
+
+    }
   });
 
 }());

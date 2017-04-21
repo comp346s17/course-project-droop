@@ -19,8 +19,12 @@ a:hover {
   border-radius: 2%;
 }
 
-.logo-image {
-  /*max-height: 30%;*/
+.nav-link {
+  padding: 0 10px;
+}
+
+.link-selected {
+  color: #54acea;
 }
 
 .nav-content {
@@ -82,7 +86,6 @@ a:hover {
 .like-icon-focused {
   font-size: 30px;
   font-weight: bold;
-
 }
 
 .likes-label, .views-label {
