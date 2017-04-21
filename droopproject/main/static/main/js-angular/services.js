@@ -56,7 +56,7 @@ services.service('PromptService', function() {
         return Math.floor(Math.random()*(max-min+1)+min);
     }
 
-    var promptToServe = prompts[randomIntFromInterval(0,prompts.length)];
+    var promptToServe = prompts[randomIntFromInterval(0,prompts.length-1)];
 
     return {
         getPrompt: function() {
