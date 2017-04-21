@@ -16,7 +16,7 @@
         <div ng-repeat="drawing in drawings">
             <div class="clearfix" ng-if="$index % 3 == 0"></div>
             <div class="col-sm-4 gallery-drawing-container">
-                <a href="#!/gallery/{{drawing.id}}">{{drawing.title}}</a>
+                <a class="drawing-title" href="#!/gallery/{{drawing.id}}">{{drawing.title}}</a>
                 <img class="gallery-image" src="{{drawing.imageUrl}}">
                 <br />
                 <label class="likes-label">{{drawing.likes}} Likes</label>

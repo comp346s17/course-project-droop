@@ -51,7 +51,6 @@ a:hover {
 }
 
 .drawings-display {
-  /*margin: 20px;*/
   padding: 40px;
 }
 
@@ -65,6 +64,10 @@ a:hover {
 
 .gallery-image {
   width: 100%;
+}
+
+.drawing-title {
+  font-size: 20px;
 }
 
 .like-icon {
