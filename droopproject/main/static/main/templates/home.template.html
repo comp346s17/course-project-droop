@@ -3,19 +3,16 @@
 
   <div class="home-top">
     <h1>Welcome to Droop</h1>
-    <p>Droop allows you to collaboratively create drawings. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    <p>Droop allows you to collaboratively create drawings. <br /> On the Canvas page you will be greeted with a canvas
+        and a prompt that will tell you what to add to the canvas.<br /> Your canvas may or may not have some art on it already.<br />
+        Once you are finished adding your contributions to the piece of art you can submit it. <br /> Afterwards be sure to explore
+        our gallery and see the other pieces of artwork that users on Droop have created.
+    </p>
   </div>
 
 
   <div class="drawings-display">
-    <div class="row">
-      <div class="col-sm-6">
-        <h1>Featured Drawings</h1>
-      </div>
-      <div class="col-sm-6">
-        <a href="#!/gallery" style="float: right;"><h3>See Full Gallery</h3></a>
-      </div>
-    </div>
+    <h1 id="featuredDrawings">Featured Drawings</h1>
     <div class="row">
         <div ng-repeat="drawing in featuredDrawings">
             <div class="clearfix drawings-row" ng-if="$index % 3 == 0"></div>
