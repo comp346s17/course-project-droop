@@ -10,6 +10,7 @@
     </p>
   </div>
 
+  <hr>
 
   <div class="drawings-display">
     <h1 id="featuredDrawings">Featured Drawings</h1>
@@ -17,8 +18,9 @@
         <div ng-repeat="drawing in featuredDrawings">
             <div class="clearfix drawings-row" ng-if="$index % 3 == 0"></div>
             <div class="col-sm-4 home-drawing">
-              <a class="drawing-title" href="#!/gallery/{{drawing.id}}">{{drawing.title}}</a>
-              <img class="gallery-image" src="{{drawing.imageUrl}}">
+              <a class="drawing-title" href="#!/gallery/{{drawing.id}}">{{drawing.title}}
+                <img class="gallery-image" src="{{drawing.imageUrl}}">
+              </a>
             </div>
         </div>
     </div>

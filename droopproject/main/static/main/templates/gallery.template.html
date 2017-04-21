@@ -11,13 +11,14 @@
 </div>
 
 
-<div class="drawings-display">
+<div class="drawings-display gallery-drawings-display">
     <div class="row drawings-row">
         <div ng-repeat="drawing in drawings">
             <div class="clearfix" ng-if="$index % 3 == 0"></div>
             <div class="col-sm-4 gallery-drawing-container">
-                <a class="drawing-title" href="#!/gallery/{{drawing.id}}">{{drawing.title}}</a>
-                <img class="gallery-image" src="{{drawing.imageUrl}}">
+                <a class="drawing-title" href="#!/gallery/{{drawing.id}}">{{drawing.title}}
+                    <img class="gallery-image" src="{{drawing.imageUrl}}">
+                </a>
                 <br />
                 <label class="likes-label">{{drawing.likes}} Likes</label>
                 <label class="views-label">{{drawing.views}} Views</label>

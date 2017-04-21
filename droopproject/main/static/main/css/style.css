@@ -41,19 +41,23 @@ a:hover {
 
 .home-top p {
   font-size: 24px;
-  color: #54acea;
+  color: #3a4ed5
 }
 
 .home-drawing {
-  padding: 30px;
+  padding: 0px 30px 60px 30px;
 }
 
 .gallery-top {
-  margin-left: 40px;
+  padding-left: 65px;
 }
 
 .drawings-display {
-  padding: 40px;
+  padding: 10px 40px;
+}
+
+.gallery-drawings-display {
+  padding-top: 30px !important;
 }
 
 .drawings-row {
@@ -61,7 +65,7 @@ a:hover {
 }
 
 .gallery-drawing-container {
-  padding: 0px 40px 80px 40px;
+  padding: 0px 40px 60px 40px;
 }
 
 .gallery-image {
