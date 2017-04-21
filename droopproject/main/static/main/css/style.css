@@ -43,7 +43,7 @@ a:hover {
 }
 
 .home-drawing {
-  padding: 30px;
+  padding: 0px 30px 60px 30px;
 }
 
 .gallery-top {
@@ -51,7 +51,7 @@ a:hover {
 }
 
 .drawings-display {
-  padding: 40px;
+  padding: 10px 40px;
 }
 
 .drawings-row {
