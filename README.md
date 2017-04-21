@@ -1,0 +1,6 @@
+# course-project-droop
+course-project-droop created by GitHub Classroom
+
+
+The goal of this web application is to provide a fun and entertaining means for users to collaboratively create art. Users will navigate to the webpage and will be prompted with a canvas and a few words describing what they should draw. The canvas may be initially blank, or contain drawings created by other users. When finished, the user will submit their work. Later on, a new user may be prompted with the drawing recently submitted by a previous user. This new user will be asked to add another element to the canvas and submit their work when they are done. After a series of contributions have been made to this drawing, it will be submitted into a gallery for all users of this web application to view. The basic idea for the collaborative drawing is that each drawing will have a theme. For example "summer day at the beach". Then each prompt will encourage the user to draw a specific element or collection of elements to the screen until a predetermined point when the drawing will be considered finished and added to the gallery. As an example, the prompts for the beach drawing (in this order) could be water, sand, sunshine, surfer, palm tree, lifeguard, and sunbathers.
+Created with Django, AngularJS and Bootstrap.
