@@ -11,7 +11,7 @@ a:hover {
 }
 
 .navbar-nav > li > a{
-  padding: 10px !important;
+  padding: 5px 5px 0 5px !important;
 }
 
 .navbar {
@@ -19,6 +19,9 @@ a:hover {
   border-radius: 2%;
 }
 
+.logo-image {
+  /*max-height: 30%;*/
+}
 
 .nav-content {
   margin: 0 2%;
@@ -39,12 +42,16 @@ a:hover {
   color: #54acea;
 }
 
+.home-drawing {
+  padding: 30px;
+}
+
 .gallery-top {
   margin-left: 40px;
 }
 
 .drawings-display {
-  margin: 20px;
+  /*margin: 20px;*/
   padding: 40px;
 }
 
@@ -53,7 +60,7 @@ a:hover {
 }
 
 .gallery-drawing-container {
-  padding: 40px;
+  padding: 0px 40px 80px 40px;
 }
 
 .gallery-image {
@@ -61,9 +68,13 @@ a:hover {
 }
 
 .like-icon {
-  float: right;
   font-size: 20px;
 }
+
+.gallery-drawing-container .like-icon {
+  float: right;
+}
+
 
 .like-icon-focused {
   font-size: 30px;
@@ -79,7 +90,7 @@ a:hover {
   margin-left: 6px;
 }
 
-.detailInfo {
+.detail-info {
     display: inline-block;
     margin-top: 1.5em;
     padding-bottom: 5em;
