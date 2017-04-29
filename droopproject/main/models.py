@@ -20,7 +20,7 @@ class Drawing(models.Model):
             'updates': self.updates,
             # 'collectionId': self.collectionId,
             'finished': self.finished,
-            'imageUrl': 'static/main/assets/example-drawing.png'
+            'imageUrl': self.image.url 
         }
 
 class Collection(models.Model):
