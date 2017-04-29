@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import JsonResponse
 from models import Drawing
 from models import Collection
 from models import Prompt
@@ -8,7 +9,22 @@ import random
 def index(request):
     return render(request, 'main/index.html')
 
-def getFinishedDrawings(num):
+
+def drawingsApi(request, drawingId=None):
+    if request.method == 'GET' and drawingId is not None:
+        drawing = getDrawing(drawingId)
+        print(drawing)
+        return JsonResponse(drawing.to_json())
+    elif request.method == 'GET':
+        drawings = getFinishedDrawings()
+        print(drawings)
+        drawingsJson = [drawing.to_json() for drawing in drawings]
+        return JsonResponse(drawingsJson, safe=False)
+
+
+
+
+def getFinishedDrawings():
     return Drawing.objects.filter(finished=True).order_by('-date')
 
 def getDrawing(drawingId):
@@ -24,8 +40,11 @@ def addView(drawingId):
     drawing.views += 1
     drawing.save()
 
+
+
 def updateDrawing(drawingId, image):
     drawing = Drawing.objects.get(id=drawingId)
+    drawing.updates += 1
     # Update Image here
     drawing.save()
 

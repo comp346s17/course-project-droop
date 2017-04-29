@@ -5,12 +5,7 @@
   .component('home', {
     templateUrl: 'static/main/templates/home.template.html',
     controller: function($scope, DrawingsService) {
-      var allDrawings = DrawingsService.getDrawings();
-
-      $scope.featuredDrawings = allDrawings.filter(function(elem, index) {
-        return index < 6;
-      });
-
+      $scope.featuredDrawings = DrawingsService.getDrawings();
     }
   })
 
@@ -18,7 +13,6 @@
     templateUrl: 'static/main/templates/canvas.template.html',
     controller: function($scope, PromptService) {
         var prompt = PromptService.getPrompt();
-
         $scope.featuredPrompt = prompt;
     }
   })
@@ -45,7 +39,6 @@
   .component('drawingGallery', {
     templateUrl: 'static/main/templates/gallery.template.html',
     controller: function($scope, DrawingsService) {
-
       $scope.drawings = DrawingsService.getDrawings();
 
       $scope.toggleDrawingLike = function(drawing) {

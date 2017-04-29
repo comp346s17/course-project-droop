@@ -9,6 +9,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index, name='index'),
+    url(r'^api/drawings/$', views.drawingsApi),
+    url(r'^api/drawings/(?P<drawingId>[0-9]+)$', views.drawingsApi),
 ]
 
 if settings.DEBUG:

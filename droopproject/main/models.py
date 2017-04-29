@@ -11,9 +11,27 @@ class Drawing(models.Model):
     finished = models.BooleanField(default=False)
     image = models.ImageField(upload_to="drawings/")
 
+    def to_json(self):
+        return {
+            'id': self.id,
+            'date': self.date,
+            'likes': self.likes,
+            'views': self.views,
+            'updates': self.updates,
+            # 'collectionId': self.collectionId,
+            'finished': self.finished,
+            'imageUrl': 'static/main/assets/example-drawing.png'
+        }
+
 class Collection(models.Model):
     title = models.CharField(max_length=200)
     numPrompts = models.IntegerField(default=5)
+
+    def to_json(self):
+        return {
+            'title': self.title,
+            'numPrompts': self.numPrompts
+        }
 
 class Prompt(models.Model):
     text = models.CharField(max_length=300)
@@ -22,3 +40,10 @@ class Prompt(models.Model):
 
     class Meta:
         unique_together = ("collectionId", "promptNum")
+
+    def to_json(self):
+        return {
+            'text': self.text,
+            'collectionId': self.collectionId,
+            'promptNum': self.promptNum
+        }
