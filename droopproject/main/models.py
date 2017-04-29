@@ -11,7 +11,6 @@ class Drawing(models.Model):
     finished = models.BooleanField(default=False)
     image = models.ImageField(upload_to="drawings/")
 
-
 class Collection(models.Model):
     title = models.CharField(max_length=200)
     numPrompts = models.IntegerField(default=5)
@@ -20,3 +19,6 @@ class Prompt(models.Model):
     text = models.CharField(max_length=300)
     collectionId = models.ForeignKey('Collection')
     promptNum = models.IntegerField()
+
+    class Meta:
+        unique_together = ("collectionId", "promptNum")
