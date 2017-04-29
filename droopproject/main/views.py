@@ -9,6 +9,12 @@ import random
 def index(request):
     return render(request, 'main/index.html')
 
+def saveImageApi(request, dataUrl):
+    if request.method == 'POST':
+        collection = Collection(title="Bike Ride by the River")  # I think this is what is causing the error
+        newImage = Drawing(collectionId=collection, image=dataUrl)  # Just testing this out
+        newImage.save()
+        return render(request, 'main/index.html')
 
 def drawingsApi(request, drawingId=None):
     if request.method == 'GET' and drawingId is not None:
@@ -20,8 +26,6 @@ def drawingsApi(request, drawingId=None):
         print(drawings)
         drawingsJson = [drawing.to_json() for drawing in drawings]
         return JsonResponse(drawingsJson, safe=False)
-
-
 
 
 def getFinishedDrawings():

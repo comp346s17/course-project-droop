@@ -47,7 +47,6 @@ $(".color").click(function() {
     $(this).toggleClass("currently-used")
 
     if (curTool == "eraser") {
-        console.log("Changing to a marker.")
         curTool = "marker"
         $("#"+currToolButton).toggleClass("currently-used")
         currToolButton = "marker"
@@ -84,8 +83,13 @@ $(".draw-size").click(function() {
 $("#btnSave").bind("click", function () {
     //Save a copy of the canvas to a hidden image file
 
-    var copyOfCanvas = $('#canvas')[0].toDataURL();
-    $("#img").attr("src", copyOfCanvas);
+    var copyOfCanvas = $('#canvas')[0].toDataURL("image/png");
+
+    // var image = $("#img")
+    // image.attr("src", copyOfCanvas);
+    // var imageUrl = image.toDataURL("image/png");
+    // var canvas = $('#canvas')
+    // var canvasUrl = canvas.toDataURL("image/png")
     //$("#img").show();
 })
 

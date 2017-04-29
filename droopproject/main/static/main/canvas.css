@@ -41,11 +41,7 @@ button {
 }
 
 #img {
-    display: none;
-    border: 1px solid rgb(0,0,0);
-    position: absolute;
-    left: 50px;
-    top: 150px;
+    visibility: hidden;
 }
 
 #btnSave {

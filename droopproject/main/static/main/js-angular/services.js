@@ -17,6 +17,16 @@ var services = angular.module('droopApp.services', [])
 
   });
 
+services.service('SaveImageService', function($resource) {
+    var saveImageApi = $resource('/api/saveImage/:dataUrl', {});
+
+    return {
+        saveImage: function(dataUrl) {
+            saveImageApi.save(dataUrl);
+        }
+    }
+})
+
 services.service('PromptService', function() {
     var prompts = [];
     prompts.push("Draw a Beach");

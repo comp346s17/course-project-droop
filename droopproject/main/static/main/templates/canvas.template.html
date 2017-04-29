@@ -17,9 +17,10 @@
 
 <!-- <a href="base64" download="myImage">Click here to download image</a> -->
 
+<img id="img" alt = ""/>
 <div id="canvasArea">
     <canvas id="canvas"></canvas>
-    <img id = "img" alt = ""/>
+    <button type="button" id="btnSave" ng-click="saveImage()">Submit</button>
 </div>
-<input type="button" id="btnSave" value="Submit" />
+
 <script type="text/javascript" src="static/main/canvas.js"></script>

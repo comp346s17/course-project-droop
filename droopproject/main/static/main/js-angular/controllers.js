@@ -11,9 +11,13 @@
 
   .component('drawingCanvas', {
     templateUrl: 'static/main/templates/canvas.template.html',
-    controller: function($scope, PromptService) {
+    controller: function($scope, PromptService, SaveImageService) {
         var prompt = PromptService.getPrompt();
         $scope.featuredPrompt = prompt;
+
+        $scope.saveImage = function(dataUrl) {
+            SaveImageService.saveImage(dataUrl);
+        }
     }
   })
 
