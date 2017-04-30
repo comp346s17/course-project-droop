@@ -30,6 +30,16 @@ button {
     top: 30%;
 }
 
+#canvas2 {
+    border-color: rgb(0, 0, 0);
+    border-width: 1px;
+    border-style: solid;
+    position: absolute;
+    left: 5%;
+    top: 30%;
+    visibility: hidden;
+}
+
 #controlArea {
     margin: 0 auto;
     padding-left: 5em;

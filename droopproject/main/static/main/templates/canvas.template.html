@@ -15,9 +15,11 @@
     </div>
 </div>
 
-<img src="{{ drawing.imageUrl}}" id="img" alt = ""/>
+
+<img src="{{ drawing.imageUrl}}" data-root="{{ drawing.imageUrl}}" id="img" alt = ""/>
 <div id="canvasArea">
     <canvas id="canvas"></canvas>
+    <canvas id="canvas2"></canvas>
     <button type="button" id="btnSave" ng-click="saveImage()">Submit</button>
 </div>
 

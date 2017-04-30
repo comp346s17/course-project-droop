@@ -37,7 +37,19 @@
 
         $scope.saveImage = function() {
           console.log("Saving drawing");
+
+          var img = $("#img")[0];
+
           var canvas = document.getElementById('canvas');
+          var canvas2 = document.getElementById('canvas2');
+
+          var context = $("#canvas").get(0).getContext("2d");
+          var context2 = $("#canvas2").get(0).getContext("2d");
+
+          context2.drawImage(canvas, 0, 0); //Draw copy of canvas to canvas 2
+          context.clearRect(0,0, canvas.width, canvas.height) //Clear canvas
+          context.drawImage(img, 0, 0); //Draw background to canvas
+          context.drawImage(canvas2, 0, 0); //Draw original canvas back to canvas
           var dataUrl = canvas.toDataURL();
           DrawingsService.saveDrawing($scope.drawing.id, dataUrl);
         };
