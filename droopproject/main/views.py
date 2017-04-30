@@ -4,6 +4,7 @@ import json
 from base64 import b64decode
 from django.core.files.base import ContentFile
 import random
+import datetime
 from models import Drawing
 from models import Collection
 from models import Prompt
@@ -36,6 +37,7 @@ def drawingsApi(request, drawingId=None):
         drawing.image = ContentFile(image_data, 'drawing.png')
         drawing.updates += 1
         if is_drawing_finished(drawing):
+            drawing.date = datetime.datetime.now()
             drawing.finished = True
         drawing.save()
         return JsonResponse(drawing.to_json())

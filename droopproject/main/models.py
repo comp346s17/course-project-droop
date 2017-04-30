@@ -1,11 +1,11 @@
 from __future__ import unicode_literals
 from django.db import models
 import random
+import datetime
 
 
 class Drawing(models.Model):
-    date = models.DateTimeField(auto_now=True)
-    likes = models.IntegerField(default=0)
+    date = models.DateTimeField(auto_now_add=True)
     views = models.IntegerField(default=0)
     collection = models.ForeignKey('Collection')
     updates = models.IntegerField(default=0)
@@ -30,7 +30,6 @@ class Drawing(models.Model):
         return {
             'id': self.id,
             'date': self.date,
-            'likes': self.likes,
             'views': self.views,
             'updates': self.updates,
             'collectionId': self.collection.id,

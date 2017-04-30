@@ -6,7 +6,6 @@
     <select>
         <option>Most Recent</option>
         <option>Most Viewed</option>
-        <option>Most Liked</option>
     </select>
 </div>
 
@@ -20,9 +19,7 @@
                     <img class="gallery-image" src="{{drawing.imageUrl}}">
                 </a>
                 <br />
-                <label class="likes-label">{{drawing.likes}} Likes</label>
                 <label class="views-label">{{drawing.views}} Views</label>
-                <a><span class="like-icon glyphicon glyphicon-thumbs-up" ng-class="{true: 'like-icon-focused'}[drawing.liked]" ng-click="toggleDrawingLike(drawing)"></span>
             </div>
         </div>
     </div>
