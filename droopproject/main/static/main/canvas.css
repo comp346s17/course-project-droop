@@ -27,7 +27,7 @@ button {
     border-style: solid;
     position: absolute;
     left: 5%;
-    top: 30%;
+    top: 40%;
 }
 
 #canvas2 {
@@ -36,7 +36,7 @@ button {
     border-style: solid;
     position: absolute;
     left: 5%;
-    top: 30%;
+    top: 40%;
     visibility: hidden;
 }
 
@@ -57,6 +57,7 @@ button {
 #btnSave {
     position: absolute;
     left: 50%;
-    top: 93%;
+    top: 102.5%;
     text-align: center;
+    margin-bottom: 1em;
 }
