@@ -1,42 +1,39 @@
 var context = $("#canvas").get(0).getContext("2d");
-context.canvas.width = window.innerWidth * .9;
-context.canvas.height = window.innerHeight * .6;
+context.canvas.width = window.innerWidth * 0.9;
+context.canvas.height = window.innerHeight * 0.6;
 
-console.log("Hello");
 
-var img = $("#img")
+var img = $("#img");
 
 
 img.on('load', function() {
-    console.log("Hello");
     context.drawImage(this,0,0);
 });
 var painting;
 
 // Keeping track of latest used colors,  sizes, tools, locations
 //Colors
-var curColor = "black"
-var clickColor = new Array();
+var curColor = "black";
+var clickColor = [];
 
 //Line sizes
-var lineSizes = {"small": 2, "regular": 5, "large": 10, "extraLarge": 15, "bigBertha": 40}
-var curLineSize = lineSizes["regular"]
-var clickSize = new Array();
+var lineSizes = {"small": 2, "regular": 5, "large": 10, "extraLarge": 15, "bigBertha": 40};
+var curLineSize = lineSizes.regular;
+var clickSize = [];
 
 //Tools
 var curTool = "marker";
-var clickTool = new Array();
+var clickTool = [];
 
 //Click locations
-var clickX = new Array();
-var clickY = new Array();
-var clickDrag = new Array();
-//
+var clickX = [];
+var clickY = [];
+var clickDrag = [];
 
 //Currently Pressed Buttons
-var currColorButton = "black"
-var currToolButton = "marker"
-var currLineSizeButton = "regular"
+var currColorButton = "black";
+var currToolButton = "marker";
+var currLineSizeButton = "regular";
 
 $('#clear').click(function() {
     //Clears the canvas & reset arrays
@@ -47,62 +44,50 @@ $('#clear').click(function() {
     clickDrag = [];
     clickColor = [];
     clickSize = [];
-    curTool = "marker"
+    curTool = "marker";
 });
 
 //Changing all the colors
 $(".color").click(function() {
-    curColor = this.id //Using built in Javascript colors
-    $("#"+currColorButton).toggleClass("currently-used")
-    $(this).toggleClass("currently-used")
+    curColor = this.id; // Using built in Javascript colors
+    $("#"+currColorButton).toggleClass("currently-used");
+    $(this).toggleClass("currently-used");
 
     if (curTool == "eraser") {
-        curTool = "marker"
-        $("#"+currToolButton).toggleClass("currently-used")
-        currToolButton = "marker"
-        $("#"+currToolButton).toggleClass("currently-used")
+        curTool = "marker";
+        $("#"+currToolButton).toggleClass("currently-used");
+        currToolButton = "marker";
+        $("#"+currToolButton).toggleClass("currently-used");
     }
 
-    currColorButton = this.id
+    currColorButton = this.id;
 });
 //
 
 //Changing the tools
 $(".tool").click(function() {
-    $("#"+currToolButton).toggleClass("currently-used")
-    $(this).toggleClass("currently-used")
-    currToolButton = this.id
-})
+    $("#"+currToolButton).toggleClass("currently-used");
+    $(this).toggleClass("currently-used");
+    currToolButton = this.id;
+});
+
 $('#marker').click(function(){
     curTool = "marker";
 });
+
 $('#eraser').click(function(){
     curTool = "eraser";
 });
-//
 
 //Changing all the line Sizes, Refactor into one function where each button shares a class 'draw-size'
 $(".draw-size").click(function() {
-    curLineSize = lineSizes[this.id]
-    $("#"+currLineSizeButton).toggleClass("currently-used")
-    $(this).toggleClass("currently-used")
-    currLineSizeButton = this.id
-})
-//
+    curLineSize = lineSizes[this.id];
+    $("#"+currLineSizeButton).toggleClass("currently-used");
+    $(this).toggleClass("currently-used");
+    currLineSizeButton = this.id;
+});
 
-// $("#btnSave").bind("click", function () {
-    //Save a copy of the canvas to a hidden image file
 
-    // console.log("Clicked");
-    // var copyOfCanvas = $('#canvas')[0].toDataURL("image/png");
-
-    // var image = $("#img")
-    // image.attr("src", copyOfCanvas);
-    // var imageUrl = image.toDataURL("image/png");
-    // var canvas = $('#canvas')
-    // var canvasUrl = canvas.toDataURL("image/png")
-    //$("#img").show();
-// });
 
 function addClick(x, y, dragging){
     //Called whenever the user clicks on the canvas adds x,y,drag and pushed color or white if erased
@@ -131,7 +116,7 @@ $('#canvas').mousedown(function(e){
 });
 
 $('#canvas').mousemove(function(e){
-  if(painting){
+  if (painting) {
     addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
     redraw();
   }
@@ -161,7 +146,7 @@ function redraw(){
         context.lineTo(clickX[i], clickY[i]);
         context.closePath();
         context.strokeStyle = clickColor[i];
-        context.lineWidth = clickSize[i]
+        context.lineWidth = clickSize[i];
         context.stroke();
     }
     context.globalAlpha = 1;

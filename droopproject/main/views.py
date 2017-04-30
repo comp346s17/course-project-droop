@@ -35,7 +35,7 @@ def drawingsApi(request, drawingId=None):
         # print(drawing.updates)
 
         # Check if updates is Collection.numprompts - 1 and set finished to true if so.
-        drawing.finished = True
+        # drawing.finished = True
         drawing.save()
         return JsonResponse(drawing.to_json())
 
