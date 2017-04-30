@@ -5,10 +5,12 @@ context.canvas.height = window.innerHeight * 0.6;
 
 var img = $("#img");
 
-
 img.on('load', function() {
-    context.drawImage(this,0,0);
+    console.log($(this).data("root"));
+
+    $("#canvas").css("background-image", "url(" + $(this).data("root") + ")");
 });
+
 var painting;
 
 // Keeping track of latest used colors,  sizes, tools, locations
