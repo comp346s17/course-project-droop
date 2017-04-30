@@ -26,14 +26,15 @@ def drawingsApi(request, drawingId=None):
         params = json.loads(request.body)
         drawingId = params.get('drawingId')
         image_url = params.get('text')
+        collectionId = params.get('collectionId')
         image_bs64 = image_url.split('base64,')[1]  # Gather just the bs64 encoding from the url
         image_data = b64decode(image_bs64)
 
-        if Drawing.objects.filter(id=drawingId).count() > 0:
+        if Drawing.objects.filter(id=drawingId).count() > 0:  # If drawing already exists
             drawing = getDrawing(drawingId)
         else:
-            Collection = get_random_collection()
-            drawing = Drawing(collection=Collection, title=Collection.title)
+            collection = Collection.objects.get(id=collectionId)
+            drawing = Drawing(collection=collection, title=collection.title)
 
         drawing.image = ContentFile(image_data, 'drawing.png')
         drawing.updates += 1
@@ -59,7 +60,8 @@ def getRandomUnfinishedDrawing(request):
     num_unfinished_drawings = Drawing.objects.filter(finished=False).count()
 
     if num_unfinished_drawings == 0 or random.random() <= 0.25:
-        new_drawing = Drawing(collection=get_random_collection())
+        collection = get_random_collection()
+        new_drawing = Drawing(collection=collection, title=collection.title)
         return JsonResponse(new_drawing.to_json())
     else:
         random_idx = random.randint(0, num_unfinished_drawings - 1)
