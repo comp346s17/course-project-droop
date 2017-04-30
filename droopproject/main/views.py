@@ -12,6 +12,7 @@ from models import Prompt
 def index(request):
     return render(request, 'main/index.html')
 
+
 def drawingsApi(request, drawingId=None):
     if request.method == 'GET' and drawingId is not None:
         drawing = getDrawing(drawingId)
@@ -44,13 +45,10 @@ def collectionsApi(request, collectionId=None):
         collection = Collection.objects.get(id=collectionId)
         return JsonResponse(collection.to_json())
 
-
-
 def promptsApi(request, collectionId, updates):
     if request.method == 'GET':
         prompts = Prompt.objects.filter(collection=collectionId, promptNum=updates)
         return JsonResponse(prompts[0].to_json())
-
 
 
 def getRandomUnfinishedDrawing(request):
@@ -66,14 +64,24 @@ def getRandomUnfinishedDrawing(request):
         return JsonResponse(drawing.to_json())
 
 
+def addView(request, drawingId):
+    drawing = Drawing.objects.get(id=drawingId)
+    drawing.views += 1
+    drawing.save()
+    return JsonResponse(drawing.to_json())
+
 
 def getFinishedDrawings():
     return Drawing.objects.filter(finished=True).order_by('-date')
 
+
+
+
+
+
+
 def getDrawing(drawingId):
     return Drawing.objects.get(id=drawingId)
-
-
 
 def get_random_collection():
     num_collections = Collection.objects.count()
@@ -86,15 +94,17 @@ def is_drawing_finished(drawing):
 
 
 
+
+
+
+
+
+
 # def addLike(drawingId):
 #     drawing = Drawing.objects.get(id=drawingId)
 #     drawing.likes += 1
 #     drawing.save()
 #
-# def addView(drawingId):
-#     drawing = Drawing.objects.get(id=drawingId)
-#     drawing.views += 1
-#     drawing.save()
 
 
 

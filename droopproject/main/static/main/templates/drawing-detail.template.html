@@ -4,15 +4,14 @@
     <img id="detail-image" src="{{drawing.imageUrl}}">
     <br />
 
-    <div class="detail-info">
-        <div class="info-block">
-            <label>Metrics:</label></br>
-            {{drawing.likes}} Likes</br>
-            {{drawing.views}} Views</br>
+    <!-- <div class="detail-info"> -->
+        <!-- <div class="info-block"> -->
+            <!-- <label>Metrics:</label> -->
+            <span>{{drawing.likes}} Likes <span>
+            <span>{{drawing.views}} Views</span>
             <a><span class="like-icon glyphicon glyphicon-thumbs-up" ng-class="{true: 'like-icon-focused'}[drawing.liked]" ng-click="toggleDrawingLike(drawing)"></span>
-        </div>
-    </div>
-    </br>
+        <!-- </div> -->
+    <!-- </div> -->
 
     <label>Created at:</label>{{drawing.date | date: ' MMMM dd, yyyy'}}
 </div>

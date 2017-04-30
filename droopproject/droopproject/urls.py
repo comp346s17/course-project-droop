@@ -15,6 +15,7 @@ urlpatterns = [
     url(r'^api/prompts/(?P<collectionId>[0-9]+)/(?P<updates>[0-9]+)$', views.promptsApi),
     url(r'^api/collections/$', views.drawingsApi),
     url(r'^api/collections/(?P<collectionId>[0-9]+)$', views.collectionsApi),
+    url(r'^api/addView/(?P<drawingId>[0-9]+)$', views.addView),
 ]
 
 if settings.DEBUG:

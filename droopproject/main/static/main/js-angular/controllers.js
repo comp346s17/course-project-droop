@@ -59,7 +59,7 @@
 
   .component('drawingDetail', {
     templateUrl: 'static/main/templates/drawing-detail.template.html',
-    controller: function($scope, DrawingsService, CollectionsService, $routeParams) {
+    controller: function($scope, DrawingsService, CollectionsService, $routeParams, $http) {
 
       DrawingsService.getDrawing($routeParams.id).$promise
         .then(function(response) {
@@ -67,8 +67,23 @@
           CollectionsService.getCollection(response.collectionId).$promise
             .then(function(collectionResponse) {
               $scope.drawing.title = collectionResponse.title;
+
+              console.log($scope.drawing.id);
+              $http({
+                method: 'GET',
+                url: '/api/addView/' + $scope.drawing.id
+              }).then(function successCallback(response) {
+                $scope.drawing.views = response.data.views;
+                }, function errorCallback(response) {
+                  console.log("Error");
+              });
         });
       });
+
+
+
+
+
 
       $scope.toggleDrawingLike = function(drawing) {
         drawing.liked = !drawing.liked;
