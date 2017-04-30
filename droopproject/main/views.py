@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+import json
 from models import Drawing
 from models import Collection
 from models import Prompt
@@ -19,22 +20,21 @@ def saveImageApi(request, dataUrl):
 def drawingsApi(request, drawingId=None):
     if request.method == 'GET' and drawingId is not None:
         drawing = getDrawing(drawingId)
-        print(drawing)
         return JsonResponse(drawing.to_json())
     elif request.method == 'GET':
         drawings = getFinishedDrawings()
-        print(drawings)
         drawingsJson = [drawing.to_json() for drawing in drawings]
         return JsonResponse(drawingsJson, safe=False)
     elif request.method == 'POST':
         params = json.loads(request.body)
         print('-------->', params);
-        # title = params.get('title', 'No title')  # Second param is default value
-        # text = params.get('text', '')
-        # post = Post(title=title, text=text)
-        # post.save()
-        # print(post);
-        # return JsonResponse(post.to_json())
+        drawingId = params.get('drawingId')
+        image = params.get('text')
+        drawing = getDrawing(drawingId)
+        # drawing.updates += 1
+        print(drawing.updates)
+        drawing.save()
+        return JsonResponse(drawing.to_json())
 
 def promptsApi(request, drawingId):
     if request.method == 'GET':

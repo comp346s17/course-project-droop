@@ -17,19 +17,24 @@
           method: 'GET',
           url: '/api/getCanvasDrawing/'
         }).then(function successCallback(response) {
-          var drawing = response.data
+          var drawing = response.data;
           $scope.drawing = drawing;
           console.log($scope.drawing);
 
-          var prompt = PromptService.getPrompt(drawing.drawingId);
-          $scope.featuredPrompt = prompt;
+
+
+          // var prompt = PromptService.getPrompt(drawing.drawingId);
+          $scope.featuredPrompt = "Ride a bike";
         }, function errorCallback(response) {
           console.log("Error");
         });
 
-        // $scope.saveImage = function(dataUrl) {
-          // DrawingsService.saveDrawing( ,);
-        // };
+        $scope.saveImage = function() {
+          console.log("Saving drawing");
+          var canvas = document.getElementById('canvas');
+          var dataURL = canvas.toDataURL();
+          DrawingsService.saveDrawing($scope.drawing.id, dataURL);
+        };
     }
   })
 

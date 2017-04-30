@@ -80,10 +80,11 @@ $(".draw-size").click(function() {
 })
 //
 
-$("#btnSave").bind("click", function () {
+// $("#btnSave").bind("click", function () {
     //Save a copy of the canvas to a hidden image file
 
-    var copyOfCanvas = $('#canvas')[0].toDataURL("image/png");
+    // console.log("Clicked");
+    // var copyOfCanvas = $('#canvas')[0].toDataURL("image/png");
 
     // var image = $("#img")
     // image.attr("src", copyOfCanvas);
@@ -91,7 +92,7 @@ $("#btnSave").bind("click", function () {
     // var canvas = $('#canvas')
     // var canvasUrl = canvas.toDataURL("image/png")
     //$("#img").show();
-})
+// });
 
 function addClick(x, y, dragging){
     //Called whenever the user clicks on the canvas adds x,y,drag and pushed color or white if erased
