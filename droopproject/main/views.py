@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 import json
+from base64 import b64decode
+from django.core.files.base import ContentFile
+import random
 from models import Drawing
 from models import Collection
 from models import Prompt
-import random
 
 
 def index(request):
@@ -29,10 +31,17 @@ def drawingsApi(request, drawingId=None):
         params = json.loads(request.body)
         # print('-------->', params);
         drawingId = params.get('drawingId')
-        image = params.get('text')
+        image_url = params.get('text')
+        image_bs64 = image_url.split('base64,')[1]  # Gather just the bs64 encoding from the url
+        # print(image_bs64)
+        image_data = b64decode(image_bs64)
         drawing = getDrawing(drawingId)
+        drawing.image = ContentFile(image_data, 'test1.png')
         # drawing.updates += 1
-        print(drawing.updates)
+        # print(drawing.updates)
+
+        # Check if updates is Collection.numprompts - 1 and set finished to true if so.
+        # drawing.finished = True
         drawing.save()
         return JsonResponse(drawing.to_json())
 

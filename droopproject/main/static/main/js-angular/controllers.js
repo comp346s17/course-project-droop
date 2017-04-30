@@ -38,8 +38,8 @@
         $scope.saveImage = function() {
           console.log("Saving drawing");
           var canvas = document.getElementById('canvas');
-          var dataURL = canvas.toDataURL();
-          DrawingsService.saveDrawing($scope.drawing.id, dataURL);
+          var dataUrl = canvas.toDataURL();
+          DrawingsService.saveDrawing($scope.drawing.id, dataUrl);
         };
 
     }
