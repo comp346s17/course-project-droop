@@ -22,20 +22,15 @@ def drawingsApi(request, drawingId=None):
         return JsonResponse(drawingsJson, safe=False)
     elif request.method == 'POST':
         params = json.loads(request.body)
-        # print('-------->', params);
         drawingId = params.get('drawingId')
         image_url = params.get('text')
         image_bs64 = image_url.split('base64,')[1]  # Gather just the bs64 encoding from the url
-        # print(image_bs64)
         image_data = b64decode(image_bs64)
         drawing = getDrawing(drawingId)
         drawing.image = ContentFile(image_data, 'test1.png')
-        # print(image_data)
-        # drawing.updates += 1
-        # print(drawing.updates)
-
-        # Check if updates is Collection.numprompts - 1 and set finished to true if so.
-        # drawing.finished = True
+        drawing.updates += 1
+        if isDrawingFinished(drawing):
+            drawing.finished = True
         drawing.save()
         return JsonResponse(drawing.to_json())
 
@@ -66,6 +61,9 @@ def getDrawing(drawingId):
 
 
 
+def isDrawingFinished(drawing):
+    collection = drawing.collection
+    return drawing.updates >= collection.numPrompts
 
 
 
