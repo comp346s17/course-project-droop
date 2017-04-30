@@ -3,7 +3,6 @@ from django.http import JsonResponse
 import json
 from base64 import b64decode
 from django.core.files.base import ContentFile
-from django.contrib.staticfiles.templatetags.staticfiles import static
 import random
 from models import Drawing
 from models import Collection
@@ -27,7 +26,12 @@ def drawingsApi(request, drawingId=None):
         image_url = params.get('text')
         image_bs64 = image_url.split('base64,')[1]  # Gather just the bs64 encoding from the url
         image_data = b64decode(image_bs64)
-        drawing = getDrawing(drawingId)
+
+        if Drawing.objects.filter(id=drawingId).count() > 0:
+            drawing = getDrawing(drawingId)
+        else:
+            drawing = Drawing(collection=get_random_collection())
+
         drawing.image = ContentFile(image_data, 'test1.png')
         drawing.updates += 1
         if is_drawing_finished(drawing):
@@ -46,9 +50,7 @@ def getRandomUnfinishedDrawing(request):
     num_unfinished_drawings = Drawing.objects.filter(finished=False).count()
 
     if num_unfinished_drawings == 0 or random.random() <= 0.25:
-        blank_image = open('droop/droopproject/main/static/main/assets/blank-image.png')
-        new_drawing = Drawing(collection=get_random_collection(), image=blank_image)
-        new_drawing.save()
+        new_drawing = Drawing(collection=get_random_collection())
         return JsonResponse(new_drawing.to_json())
     else:
         random_idx = random.randint(0, num_unfinished_drawings - 1)
