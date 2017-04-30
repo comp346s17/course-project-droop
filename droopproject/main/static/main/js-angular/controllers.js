@@ -11,13 +11,23 @@
 
   .component('drawingCanvas', {
     templateUrl: 'static/main/templates/canvas.template.html',
-    controller: function($scope, PromptService, SaveImageService) {
+    controller: function($scope, PromptService, DrawingsService, $http) {
         var prompt = PromptService.getPrompt();
         $scope.featuredPrompt = prompt;
 
-        $scope.saveImage = function(dataUrl) {
-            SaveImageService.saveImage(dataUrl);
-        }
+        $http({
+          method: 'GET',
+          url: '/api/getCanvasDrawing/'
+        }).then(function successCallback(response) {
+          $scope.drawing = response.data;
+          console.log($scope.drawing);
+        }, function errorCallback(response) {
+          console.log("Error");
+        });
+
+        // $scope.saveImage = function(dataUrl) {
+          // DrawingsService.saveDrawing( ,);
+        // };
     }
   })
 

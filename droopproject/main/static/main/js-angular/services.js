@@ -12,22 +12,25 @@ var services = angular.module('droopApp.services', [])
       },
       getDrawing: function(drawingId) {
         return drawingsApi.get({id: drawingId});
+      },
+      saveDrawing: function(drawingId, imageUrl) {
+        return drawingsApi.save({drawingId: drawingId, text: imageUrl});
       }
     };
 
-  });
+  })
 
-services.service('SaveImageService', function($resource) {
-    var saveImageApi = $resource('/api/saveImage/:dataUrl', {});
+// services.service('SaveImageService', function($resource) {
+//     var saveImageApi = $resource('/api/saveImage/:dataUrl', {});
+//
+//     return {
+//         saveImage: function(dataUrl) {
+//             saveImageApi.save(dataUrl);
+//         }
+//     }
+// })
 
-    return {
-        saveImage: function(dataUrl) {
-            saveImageApi.save(dataUrl);
-        }
-    }
-})
-
-services.service('PromptService', function() {
+.service('PromptService', function() {
     var prompts = [];
     prompts.push("Draw a Beach");
     prompts.push("Draw a downtown cityscape");

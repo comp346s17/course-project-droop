@@ -18,7 +18,7 @@ class Drawing(models.Model):
             'likes': self.likes,
             'views': self.views,
             'updates': self.updates,
-            'collectionId': self.collectionId,
+            # 'collectionId': self.collectionId,
             'finished': self.finished,
             'imageUrl': self.image.url
         }

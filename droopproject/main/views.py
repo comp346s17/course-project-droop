@@ -26,6 +26,30 @@ def drawingsApi(request, drawingId=None):
         print(drawings)
         drawingsJson = [drawing.to_json() for drawing in drawings]
         return JsonResponse(drawingsJson, safe=False)
+    elif request.method == 'POST':
+        params = json.loads(request.body)
+        print('-------->', params);
+        # title = params.get('title', 'No title')  # Second param is default value
+        # text = params.get('text', '')
+        # post = Post(title=title, text=text)
+        # post.save()
+        # print(post);
+        # return JsonResponse(post.to_json())
+
+
+
+def getRandomUnfinishedDrawing(request):
+
+    # First check if we should create a new drawing using a random number test
+    if False:
+        pass
+    else:
+        random_idx = random.randint(0, Drawing.objects.filter(finished=False).count() - 1)
+        drawing = Drawing.objects.filter(finished=False)[random_idx]
+        return JsonResponse(drawing.to_json())
+
+
+
 
 
 def getFinishedDrawings():
@@ -52,9 +76,6 @@ def updateDrawing(drawingId, image):
     # Update Image here
     drawing.save()
 
-def getRandomUnfinishedDrawing():
-    random_idx = random.randint(0, Drawing.objects.count() - 1)
-    return Drawing.objects.filter(finished=false)[random_idx]
 
 def getCurrentDrawingPrompt(drawingId):
     drawing = Drawing.objects.get(id=drawingId)
