@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 from django.db import models
+import random
 
 
 class Drawing(models.Model):
@@ -26,6 +27,7 @@ class Drawing(models.Model):
 class Collection(models.Model):
     title = models.CharField(max_length=200)
     numPrompts = models.IntegerField(default=5)
+
 
     def to_json(self):
         return {

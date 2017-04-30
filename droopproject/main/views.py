@@ -3,6 +3,7 @@ from django.http import JsonResponse
 import json
 from base64 import b64decode
 from django.core.files.base import ContentFile
+from django.contrib.staticfiles.templatetags.staticfiles import static
 import random
 from models import Drawing
 from models import Collection
@@ -29,7 +30,7 @@ def drawingsApi(request, drawingId=None):
         drawing = getDrawing(drawingId)
         drawing.image = ContentFile(image_data, 'test1.png')
         drawing.updates += 1
-        if isDrawingFinished(drawing):
+        if is_drawing_finished(drawing):
             drawing.finished = True
         drawing.save()
         return JsonResponse(drawing.to_json())
@@ -41,12 +42,16 @@ def promptsApi(request, collectionId, updates):
 
 
 def getRandomUnfinishedDrawing(request):
-
     # First check if we should create a new drawing using a random number test
-    if False:
-        pass
+    num_unfinished_drawings = Drawing.objects.filter(finished=False).count()
+
+    if num_unfinished_drawings == 0 or random.random() <= 0.25:
+        blank_image = open('droop/droopproject/main/static/main/assets/blank-image.png')
+        new_drawing = Drawing(collection=get_random_collection(), image=blank_image)
+        new_drawing.save()
+        return JsonResponse(new_drawing.to_json())
     else:
-        random_idx = random.randint(0, Drawing.objects.filter(finished=False).count() - 1)
+        random_idx = random.randint(0, num_unfinished_drawings - 1)
         drawing = Drawing.objects.filter(finished=False)[random_idx]
         return JsonResponse(drawing.to_json())
 
@@ -60,8 +65,12 @@ def getDrawing(drawingId):
 
 
 
+def get_random_collection():
+    num_collections = Collection.objects.count()
+    rand_idx = random.randint(0, num_collections - 1)
+    return Collection.objects.all()[rand_idx]
 
-def isDrawingFinished(drawing):
+def is_drawing_finished(drawing):
     collection = drawing.collection
     return drawing.updates >= collection.numPrompts
 
