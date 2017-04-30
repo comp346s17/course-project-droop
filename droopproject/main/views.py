@@ -12,13 +12,6 @@ from models import Prompt
 def index(request):
     return render(request, 'main/index.html')
 
-def saveImageApi(request, dataUrl):
-    if request.method == 'POST':
-        collection = Collection(title="Bike Ride by the River")  # I think this is what is causing the error
-        newImage = Drawing(collectionId=collection, image=dataUrl)  # Just testing this out
-        newImage.save()
-        return render(request, 'main/index.html')
-
 def drawingsApi(request, drawingId=None):
     if request.method == 'GET' and drawingId is not None:
         drawing = getDrawing(drawingId)
@@ -37,18 +30,18 @@ def drawingsApi(request, drawingId=None):
         image_data = b64decode(image_bs64)
         drawing = getDrawing(drawingId)
         drawing.image = ContentFile(image_data, 'test1.png')
+        # print(image_data)
         # drawing.updates += 1
         # print(drawing.updates)
 
         # Check if updates is Collection.numprompts - 1 and set finished to true if so.
-        # drawing.finished = True
+        drawing.finished = True
         drawing.save()
         return JsonResponse(drawing.to_json())
 
 def promptsApi(request, collectionId, updates):
     if request.method == 'GET':
         prompts = Prompt.objects.filter(collection=collectionId, promptNum=updates)
-        print('------->', prompts[0].text)
         return JsonResponse(prompts[0].to_json())
 
 
@@ -70,29 +63,35 @@ def getFinishedDrawings():
 def getDrawing(drawingId):
     return Drawing.objects.get(id=drawingId)
 
-def addLike(drawingId):
-    drawing = Drawing.objects.get(id=drawingId)
-    drawing.likes += 1
-    drawing.save()
-
-def addView(drawingId):
-    drawing = Drawing.objects.get(id=drawingId)
-    drawing.views += 1
-    drawing.save()
 
 
 
-def updateDrawing(drawingId, image):
-    drawing = Drawing.objects.get(id=drawingId)
-    drawing.updates += 1
-    # Update Image here
-    drawing.save()
 
 
-def getCurrentDrawingPrompt(drawingId):
-    drawing = Drawing.objects.get(id=drawingId)
-    return Prompt.objects.filter(collectionId=drawing.CollectionId).filter(promptNum=drawing.updates)[0]  # TODO: This is kinda ugly.
 
-def getCurrentDrawingTitle(drawingId):
-    drawing = Drawing.objects.get(id=drawingId)
-    return Collection.get(id=drawing.CollectionId)
+# def addLike(drawingId):
+#     drawing = Drawing.objects.get(id=drawingId)
+#     drawing.likes += 1
+#     drawing.save()
+#
+# def addView(drawingId):
+#     drawing = Drawing.objects.get(id=drawingId)
+#     drawing.views += 1
+#     drawing.save()
+
+
+
+# def updateDrawing(drawingId, image):
+#     drawing = Drawing.objects.get(id=drawingId)
+#     drawing.updates += 1
+#     # Update Image here
+#     drawing.save()
+#
+#
+# def getCurrentDrawingPrompt(drawingId):
+#     drawing = Drawing.objects.get(id=drawingId)
+#     return Prompt.objects.filter(collectionId=drawing.CollectionId).filter(promptNum=drawing.updates)[0]  # TODO: This is kinda ugly.
+#
+# def getCurrentDrawingTitle(drawingId):
+#     drawing = Drawing.objects.get(id=drawingId)
+#     return Collection.get(id=drawing.CollectionId)

@@ -11,7 +11,6 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^api/drawings/$', views.drawingsApi),
     url(r'^api/drawings/(?P<drawingId>[0-9]+)$', views.drawingsApi),
-    url(r'^api/saveImage/(?P<dataUrl>)$', views.saveImageApi),
     url(r'^api/getCanvasDrawing/$', views.getRandomUnfinishedDrawing),
     url(r'^api/prompts/(?P<collectionId>[0-9]+)/(?P<updates>[0-9]+)$', views.promptsApi),
 ]
