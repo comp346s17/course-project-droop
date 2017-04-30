@@ -36,6 +36,9 @@ def drawingsApi(request, drawingId=None):
         # print(post);
         # return JsonResponse(post.to_json())
 
+def promptsApi(request, drawingId):
+    if request.method == 'GET':
+        return getCurrentDrawingPrompt(drawingId)
 
 
 def getRandomUnfinishedDrawing(request):

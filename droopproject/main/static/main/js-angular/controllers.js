@@ -12,15 +12,17 @@
   .component('drawingCanvas', {
     templateUrl: 'static/main/templates/canvas.template.html',
     controller: function($scope, PromptService, DrawingsService, $http) {
-        var prompt = PromptService.getPrompt();
-        $scope.featuredPrompt = prompt;
 
         $http({
           method: 'GET',
           url: '/api/getCanvasDrawing/'
         }).then(function successCallback(response) {
-          $scope.drawing = response.data;
+          var drawing = response.data
+          $scope.drawing = drawing;
           console.log($scope.drawing);
+
+          var prompt = PromptService.getPrompt(drawing.drawingId);
+          $scope.featuredPrompt = prompt;
         }, function errorCallback(response) {
           console.log("Error");
         });
