@@ -12,6 +12,7 @@ img.on('load', function() {
     console.log($(this).data("root"));
 
     $("#canvas").css("background-image", "url(" + $(this).data("root") + ")");
+    $("#canvas").css("background-repeat", "no-repeat");
 });
 
 var painting;
