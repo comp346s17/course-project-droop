@@ -1,16 +1,22 @@
 var context = $("#canvas").get(0).getContext("2d");
 var context2 = $("#canvas2").get(0).getContext("2d");
+var context3 = $("#canvas3").get(0).getContext("2d");
 context.canvas.width = window.innerWidth * 0.75;
 context.canvas.height = window.innerHeight * 0.6;
 context2.canvas.width = window.innerWidth * 0.75;
 context2.canvas.height = window.innerHeight * 0.6;
+context3.canvas.width = window.innerWidth * 0.75;
+context3.canvas.height = window.innerHeight * 0.6;
 
 
 var img = $("#img");
 
 img.on('load', function() {
+
     $("#canvas").css("background-image", "url(" + $(this).data("root") + ")");
     $("#canvas").css("background-repeat", "no-repeat");
+    $("#canvas3").css("background-image", "url(" + $(this).data("root") + ")");
+    $("#canvas3").css("background-repeat", "no-repeat");
 });
 
 var painting;
@@ -100,6 +106,7 @@ function addClick(x, y, dragging){
     clickY.push(y);
     clickDrag.push(dragging);
     if(curTool == "eraser"){
+        //clickColor.push("red")
         clickColor.push("white");
     } else {
         clickColor.push(curColor);
@@ -153,5 +160,6 @@ function redraw(){
         context.lineWidth = clickSize[i];
         context.stroke();
     }
+    //context.globalCompositeOperation = "source-over";
     context.globalAlpha = 1;
 }
