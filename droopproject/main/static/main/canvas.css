@@ -22,18 +22,20 @@ button {
 }
 
 #canvas {
-    border-color: rgb(0, 0, 0);
-    border-width: 1px;
-    border-style: solid;
+    border: 5px solid #54acea;
+    border-radius: 2%;
+    border-image: linear-gradient(to right bottom, #3acfd5, #3a4ed5);
+    border-image-slice: 1;
     position: absolute;
     left: 12.5%;
     top: 40%;
 }
 
 #canvas2 {
-    border-color: rgb(0, 0, 0);
-    border-width: 1px;
-    border-style: solid;
+    border: 5px solid #54acea;
+    border-radius: 2%;
+    border-image: linear-gradient(to right bottom, #3acfd5, #3a4ed5);
+    border-image-slice: 1;
     position: absolute;
     left: 12.5%;
     top: 40%;
@@ -41,9 +43,10 @@ button {
 }
 
 #canvas3 {
-    border-color: rgb(0, 0, 0);
-    border-width: 1px;
-    border-style: solid;
+    border: 5px solid #54acea;
+    border-radius: 2%;
+    border-image: linear-gradient(to right bottom, #3acfd5, #3a4ed5);
+    border-image-slice: 1;
     position: absolute;
     z-index: -1;
     left: 12.5%;
