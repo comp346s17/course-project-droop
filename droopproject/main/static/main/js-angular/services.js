@@ -18,7 +18,7 @@ var services = angular.module('droopApp.services', [])
       }
     };
 
-  })
+  });
 
 // services.service('SaveImageService', function($resource) {
 //     var saveImageApi = $resource('/api/saveImage/:dataUrl', {});
@@ -29,15 +29,5 @@ var services = angular.module('droopApp.services', [])
 //         }
 //     }
 // })
-
-.service('PromptService', function($resource) {
-    var promptsApi = $resource('/api/prompts/:id', {});
-
-       return {
-           getPrompt: function(drawingId) {
-               return promptsApi.get({id: drawingId});
-           }
-       };
-});
 
 }());

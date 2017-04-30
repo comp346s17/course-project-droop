@@ -11,7 +11,7 @@
 
   .component('drawingCanvas', {
     templateUrl: 'static/main/templates/canvas.template.html',
-    controller: function($scope, PromptService, DrawingsService, $http) {
+    controller: function($scope, DrawingsService, $http) {
 
         $http({
           method: 'GET',
@@ -21,10 +21,16 @@
           $scope.drawing = drawing;
           console.log($scope.drawing);
 
+          $http({
+            method: 'GET',
+            url: '/api/prompts/' + drawing.collectionId + '/' + drawing.updates
+          }).then(function successCallback(response) {
 
-
-          // var prompt = PromptService.getPrompt(drawing.drawingId);
-          $scope.featuredPrompt = "Ride a bike";
+           var prompt = response.data;
+           $scope.featuredPrompt = "Add " + prompt.text;
+          }, function errorCallback(response) {
+            console.log("Error");
+          });
         }, function errorCallback(response) {
           console.log("Error");
         });
@@ -35,6 +41,7 @@
           var dataURL = canvas.toDataURL();
           DrawingsService.saveDrawing($scope.drawing.id, dataURL);
         };
+
     }
   })
 

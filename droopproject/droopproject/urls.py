@@ -13,7 +13,7 @@ urlpatterns = [
     url(r'^api/drawings/(?P<drawingId>[0-9]+)$', views.drawingsApi),
     url(r'^api/saveImage/(?P<dataUrl>)$', views.saveImageApi),
     url(r'^api/getCanvasDrawing/$', views.getRandomUnfinishedDrawing),
-    url(r'^api/prompts/(?P<drawingId>[0-9]+)$', views.promptsApi),
+    url(r'^api/prompts/(?P<collectionId>[0-9]+)/(?P<updates>[0-9]+)$', views.promptsApi),
 ]
 
 if settings.DEBUG:
