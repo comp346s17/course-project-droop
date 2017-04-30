@@ -1,12 +1,16 @@
 var context = $("#canvas").get(0).getContext("2d");
-context.canvas.width = window.innerWidth * 0.9;
+var context2 = $("#canvas2").get(0).getContext("2d");
+context.canvas.width = window.innerWidth * 0.75;
 context.canvas.height = window.innerHeight * 0.6;
+context2.canvas.width = window.innerWidth * 0.75;
+context2.canvas.height = window.innerHeight * 0.6;
 
 
 var img = $("#img");
 
 img.on('load', function() {
     $("#canvas").css("background-image", "url(" + $(this).data("root") + ")");
+    $("#canvas").css("background-repeat", "no-repeat");
 });
 
 var painting;

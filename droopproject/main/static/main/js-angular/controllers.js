@@ -11,7 +11,7 @@
 
   .component('drawingCanvas', {
     templateUrl: 'static/main/templates/canvas.template.html',
-    controller: function($scope, DrawingsService, $http) {
+    controller: function($scope, DrawingsService, $http, $location) {
 
         $http({
           method: 'GET',
@@ -19,7 +19,6 @@
         }).then(function successCallback(response) {
           var drawing = response.data;
           $scope.drawing = drawing;
-          console.log($scope.drawing);
 
           $http({
             method: 'GET',
@@ -52,6 +51,7 @@
           context.drawImage(canvas2, 0, 0); // Draw original canvas back to canvas
           var dataUrl = canvas.toDataURL();
           DrawingsService.saveDrawing($scope.drawing.id, dataUrl);
+          $location.path('/gallery');
         };
 
     }
