@@ -39,7 +39,6 @@ def drawingsApi(request, drawingId=None):
 def promptsApi(request, collectionId, updates):
     if request.method == 'GET':
         prompts = Prompt.objects.filter(collection=collectionId, promptNum=updates)
-        print('------->', prompts[0].text)
         return JsonResponse(prompts[0].to_json())
 
 

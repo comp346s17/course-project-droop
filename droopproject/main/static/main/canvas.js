@@ -1,6 +1,11 @@
 var context = $("#canvas").get(0).getContext("2d");
 context.canvas.width = window.innerWidth * .9;
 context.canvas.height = window.innerHeight * .6;
+var img = $("#img")
+img.on('load', function() {
+    console.log("Hello");
+    context.drawImage(this,0,0);
+});
 var painting;
 
 // Keeping track of latest used colors,  sizes, tools, locations
