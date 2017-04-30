@@ -32,7 +32,7 @@ def drawingsApi(request, drawingId=None):
         else:
             drawing = Drawing(collection=get_random_collection())
 
-        drawing.image = ContentFile(image_data, 'test1.png')
+        drawing.image = ContentFile(image_data, 'drawing.png')
         drawing.updates += 1
         if is_drawing_finished(drawing):
             drawing.finished = True

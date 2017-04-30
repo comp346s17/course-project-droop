@@ -12,6 +12,15 @@ class Drawing(models.Model):
     finished = models.BooleanField(default=False)
     image = models.ImageField(upload_to="drawings/", null=True, blank=True)
 
+    def save(self, *args, **kwargs):  # From http://stackoverflow.com/questions/4394194/replacing-a-django-image-doesnt-delete-original
+        # delete old file when replacing by updating the file
+        try:
+            this = Drawing.objects.get(id=self.id)
+            if this.image != self.image:
+                this.image.delete(save=False)
+        except: pass  # when new photo then we do nothing, normal case
+        super(Drawing, self).save(*args, **kwargs)
+
     def to_json(self):
         try:  # If imageUrl is null, default to blank screen image
             image_url = self.image.url
