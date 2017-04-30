@@ -32,7 +32,8 @@ def drawingsApi(request, drawingId=None):
         if Drawing.objects.filter(id=drawingId).count() > 0:
             drawing = getDrawing(drawingId)
         else:
-            drawing = Drawing(collection=get_random_collection())
+            Collection = get_random_collection()
+            drawing = Drawing(collection=Collection, title=Collection)
 
         drawing.image = ContentFile(image_data, 'drawing.png')
         drawing.updates += 1

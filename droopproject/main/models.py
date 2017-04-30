@@ -8,6 +8,7 @@ class Drawing(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     views = models.IntegerField(default=0)
     collection = models.ForeignKey('Collection')
+    title = models.CharField(max_length=200)
     updates = models.IntegerField(default=0)
     finished = models.BooleanField(default=False)
     image = models.ImageField(upload_to="drawings/", null=True, blank=True)
