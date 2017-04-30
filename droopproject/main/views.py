@@ -36,9 +36,11 @@ def drawingsApi(request, drawingId=None):
         # print(post);
         # return JsonResponse(post.to_json())
 
-def promptsApi(request, drawingId):
+def promptsApi(request, collectionId, updates):
     if request.method == 'GET':
-        return getCurrentDrawingPrompt(drawingId)
+        prompts = Prompt.objects.filter(collection=collectionId, promptNum=updates)
+        print('------->', prompts[0].text)
+        return JsonResponse(prompts[0].to_json())
 
 
 def getRandomUnfinishedDrawing(request):
@@ -50,8 +52,6 @@ def getRandomUnfinishedDrawing(request):
         random_idx = random.randint(0, Drawing.objects.filter(finished=False).count() - 1)
         drawing = Drawing.objects.filter(finished=False)[random_idx]
         return JsonResponse(drawing.to_json())
-
-
 
 
 

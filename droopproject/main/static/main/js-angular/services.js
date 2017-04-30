@@ -30,14 +30,4 @@ var services = angular.module('droopApp.services', [])
 //     }
 // })
 
-.service('PromptService', function($resource) {
-    var promptsApi = $resource('/api/prompts/:id', {});
-
-       return {
-           getPrompt: function(drawingId) {
-               return promptsApi.get({id: drawingId});
-           }
-       };
-});
-
 }());
