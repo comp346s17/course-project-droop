@@ -13,6 +13,8 @@ urlpatterns = [
     url(r'^api/drawings/(?P<drawingId>[0-9]+)$', views.drawingsApi),
     url(r'^api/getCanvasDrawing/$', views.getRandomUnfinishedDrawing),
     url(r'^api/prompts/(?P<collectionId>[0-9]+)/(?P<updates>[0-9]+)$', views.promptsApi),
+    url(r'^api/collections/$', views.drawingsApi),
+    url(r'^api/collections/(?P<collectionId>[0-9]+)$', views.collectionsApi),
 ]
 
 if settings.DEBUG:

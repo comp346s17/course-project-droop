@@ -59,9 +59,16 @@
 
   .component('drawingDetail', {
     templateUrl: 'static/main/templates/drawing-detail.template.html',
-    controller: function($scope, DrawingsService, $routeParams) {
+    controller: function($scope, DrawingsService, CollectionsService, $routeParams) {
 
-      $scope.drawing = DrawingsService.getDrawing($routeParams.id);
+      DrawingsService.getDrawing($routeParams.id).$promise
+        .then(function(response) {
+          $scope.drawing = response;
+          CollectionsService.getCollection(response.collectionId).$promise
+            .then(function(collectionResponse) {
+              $scope.drawing.title = collectionResponse.title;
+        });
+      });
 
       $scope.toggleDrawingLike = function(drawing) {
         drawing.liked = !drawing.liked;
@@ -99,6 +106,28 @@
 
 
     }
-  });
+  })
+
+  .filter('collectionIdToTitle', function($filter, CollectionsService) {
+  /* Takes a userID and returns the name of the user with that userID.
+  Adapted from https://glebbahmutov.com/blog/async-angular-filter/ */
+  // We need to cache results to ensure that we don't get a digest cycle error as the call to get a user's name is asynchronous.
+  var cached = {};
+  function collectionIdToTitleFilter(collectionId) {
+    if (collectionId) {
+      if (collectionId in cached) {
+        // avoid returning a promise!
+        return typeof cached[collectionId] === 'string' ? cached[collectionId] : undefined;
+      } else {
+        CollectionsService.getCollection(collectionId).$promise
+        .then(function(collectionResponse) {
+          cached[collectionId] = collectionResponse.title;
+        });
+      }
+    }
+  }
+  collectionIdToTitleFilter.$stateful = true;
+  return collectionIdToTitleFilter;
+});
 
 }());

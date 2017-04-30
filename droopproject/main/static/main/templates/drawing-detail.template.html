@@ -1,6 +1,5 @@
 <div id="detailContainer">
     <h1 id="detailTitle" class="detail-heading">{{drawing.title}}</h1>
-    <label id="detailCollection"class="detail-heading">Collection: {{drawing.collection}}</label>
     <br />
     <img id="detail-image" src="{{drawing.imageUrl}}">
     <br />
@@ -12,14 +11,8 @@
             {{drawing.views}} Views</br>
             <a><span class="like-icon glyphicon glyphicon-thumbs-up" ng-class="{true: 'like-icon-focused'}[drawing.liked]" ng-click="toggleDrawingLike(drawing)"></span>
         </div>
-        <div class="info-block">
-            <label>Artists:</label></br>
-            <span ng-repeat="artist in drawing.artists">
-              {{artist}},
-          </span>
-        </div>
     </div>
     </br>
 
-    <label>Created at:</label>{{drawing.createdAt | date: ' MMMM dd, yyyy'}}
+    <label>Created at:</label>{{drawing.date | date: ' MMMM dd, yyyy'}}
 </div>
