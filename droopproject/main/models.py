@@ -10,9 +10,14 @@ class Drawing(models.Model):
     collection = models.ForeignKey('Collection')
     updates = models.IntegerField(default=0)
     finished = models.BooleanField(default=False)
-    image = models.ImageField(upload_to="drawings/")
+    image = models.ImageField(upload_to="drawings/", null=True, blank=True)
 
     def to_json(self):
+        try:  # If imageUrl is null, default to blank screen image
+            image_url = self.image.url
+        except:
+            image_url = '/media/drawings/blankImage.png'
+
         return {
             'id': self.id,
             'date': self.date,
@@ -21,7 +26,7 @@ class Drawing(models.Model):
             'updates': self.updates,
             'collectionId': self.collection.id,
             'finished': self.finished,
-            'imageUrl': self.image.url
+            'imageUrl': image_url
         }
 
 class Collection(models.Model):

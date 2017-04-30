@@ -6,8 +6,6 @@ context.canvas.height = window.innerHeight * 0.6;
 var img = $("#img");
 
 img.on('load', function() {
-    console.log($(this).data("root"));
-
     $("#canvas").css("background-image", "url(" + $(this).data("root") + ")");
 });
 
