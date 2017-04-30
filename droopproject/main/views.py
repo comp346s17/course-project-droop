@@ -33,7 +33,7 @@ def drawingsApi(request, drawingId=None):
             drawing = getDrawing(drawingId)
         else:
             Collection = get_random_collection()
-            drawing = Drawing(collection=Collection, title=Collection)
+            drawing = Drawing(collection=Collection, title=Collection.title)
 
         drawing.image = ContentFile(image_data, 'drawing.png')
         drawing.updates += 1

@@ -14,9 +14,9 @@ var img = $("#img");
 img.on('load', function() {
 
     $("#canvas").css("background-image", "url(" + $(this).data("root") + ")");
-    $("#canvas").css("background-repeat", "no-repeat");
+    $("#canvas").css("background", "no-repeat center center cover"); //Background window-size messed up
     $("#canvas3").css("background-image", "url(" + $(this).data("root") + ")");
-    $("#canvas3").css("background-repeat", "no-repeat");
+    $("#canvas3").css("background", "background: no-repeat center center cover");
 });
 
 var painting;

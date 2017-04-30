@@ -11,7 +11,9 @@
           $scope.featuredDrawings = allDrawings.filter(function(elem, index) {
             return index < 6;
           });
-
+          $scope.featuredDrawings.forEach(function(item) {
+              console.log(item); //title field not showing up
+          });
         });
       }
   })

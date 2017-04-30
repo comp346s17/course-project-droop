@@ -31,6 +31,7 @@ class Drawing(models.Model):
         return {
             'id': self.id,
             'date': self.date,
+            'title': self.title,
             'views': self.views,
             'updates': self.updates,
             'collectionId': self.collection.id,
