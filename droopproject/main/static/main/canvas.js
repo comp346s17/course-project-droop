@@ -12,10 +12,12 @@ context3.canvas.height = window.innerHeight * 0.6;
 var img = $("#img");
 
 img.on('load', function() {
+    $(this).css("width", context.canvas.width);
+    $(this).css("height", context.canvas.height);
     $("#canvas").css("background-image", "url(" + $(this).data("root") + ")");
-    $("#canvas").css("background", "no-repeat center center cover"); //Background window-size messed up
+    $("#canvas").css("background-repeat", "no-repeat"); //Background window-size messed up
     $("#canvas3").css("background-image", "url(" + $(this).data("root") + ")");
-    $("#canvas3").css("background", "background: no-repeat center center cover");
+    $("#canvas3").css("background-repeat", "no-repeat");
 });
 
 var painting;
