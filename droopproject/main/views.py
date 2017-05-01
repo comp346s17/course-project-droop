@@ -19,7 +19,7 @@ def drawingsApi(request, drawingId=None):
         drawing = getDrawing(drawingId)
         return JsonResponse(drawing.to_json())
     elif request.method == 'GET':
-        drawings = getFinishedDrawings()
+        drawings = getFinishedDrawingsByDate()
         drawingsJson = [drawing.to_json() for drawing in drawings]
         return JsonResponse(drawingsJson, safe=False)
     elif request.method == 'POST':
@@ -76,10 +76,11 @@ def addView(request, drawingId):
     return JsonResponse(drawing.to_json())
 
 
-def getFinishedDrawings():
+def getFinishedDrawingsByDate():
     return Drawing.objects.filter(finished=True).order_by('-date')
 
-
+# def getFinishedDrawingsByViews():
+#     return Drawing.objects.filter(finished=True).order_by('-views')
 
 
 

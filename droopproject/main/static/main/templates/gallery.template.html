@@ -1,18 +1,18 @@
 
 <div class="gallery-top">
 
-    <input type="text" placeholder="Search By Theme" />
+    <input type="text" placeholder="Search By Theme" ng-model="searchKey"/>
     <label>Sort By</label>
-    <select>
-        <option>Most Recent</option>
-        <option>Most Viewed</option>
+    <select ng-model="drawingSort">
+        <option value="-date">Most Recent</option>
+        <option value="-views">Most Viewed</option>
     </select>
 </div>
 
 
 <div class="drawings-display gallery-drawings-display">
     <div class="row drawings-row">
-        <div ng-repeat="drawing in drawings">
+        <div ng-repeat="drawing in drawings | filter:{title: searchKey} | orderBy: drawingSort">
             <div class="clearfix" ng-if="$index % 3 == 0"></div>
             <div class="col-sm-4 gallery-drawing-container">
                 <a class="drawing-title" href="#!/gallery/{{drawing.id}}">{{drawing.title}}

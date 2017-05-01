@@ -89,6 +89,10 @@
     templateUrl: 'static/main/templates/gallery.template.html',
     controller: function($scope, DrawingsService) {
       $scope.drawings = DrawingsService.getDrawings();
+
+      $scope.searchKey = "";
+      $scope.drawingSort = '-date';
+
     }
   })
 
