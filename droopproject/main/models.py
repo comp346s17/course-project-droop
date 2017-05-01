@@ -39,6 +39,10 @@ class Drawing(models.Model):
             'imageUrl': image_url
         }
 
+    def __str__(self):
+        return str(self.id) + str(self.title)
+
+
 class Collection(models.Model):
     title = models.CharField(max_length=200)
     numPrompts = models.IntegerField(default=5)
@@ -49,6 +53,9 @@ class Collection(models.Model):
             'title': self.title,
             'numPrompts': self.numPrompts
         }
+
+    def __str__(self):
+        return self.title
 
 class Prompt(models.Model):
     text = models.CharField(max_length=300)
@@ -64,3 +71,6 @@ class Prompt(models.Model):
             'collectionId': self.collection.id,
             'promptNum': self.promptNum
         }
+
+    def __str__(self):
+        return self.text

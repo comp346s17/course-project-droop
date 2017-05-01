@@ -13,8 +13,8 @@ var services = angular.module('droopApp.services', [])
     getDrawing: function(drawingId) {
       return drawingsApi.get({id: drawingId});
     },
-    saveDrawing: function(drawingId, imageUrl) {
-      return drawingsApi.save({drawingId: drawingId, text: imageUrl});
+    saveDrawing: function(drawingId, collectionId, imageUrl) {
+      return drawingsApi.save({drawingId: drawingId, collectionId: collectionId, text: imageUrl});
     }
   };
 
