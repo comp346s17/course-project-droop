@@ -54,6 +54,16 @@ a:hover {
   font-family: 'Eagle Lake', cursive;
 }
 
+.gallery-top .completed-drawings {
+  font-family: 'Eagle Lake', cursive;
+  font-size: 30px;
+  margin-right: 50px;
+}
+
+.gallery-top .search-input {
+  margin-right: 25px;
+}
+
 .home-top p {
   font-size: 24px;
   color: #3a4ed5
@@ -143,4 +153,10 @@ a:hover {
 
 #featuredDrawings {
     padding-left: 15px;
+}
+
+#submitArea {
+  font-size: 20px;
+  margin: auto 0;
+  margin-left: 300px;
 }
