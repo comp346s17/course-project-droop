@@ -16,7 +16,7 @@
             <div class="clearfix" ng-if="$index % 3 == 0"></div>
             <div class="col-sm-4 gallery-drawing-container">
                 <a class="drawing-title" href="#!/gallery/{{drawing.id}}">{{drawing.title}}
-                    <img class="gallery-image" src="{{drawing.imageUrl}}">
+                    <img class="gallery-image" ng-src="{{drawing.imageUrl}}">
                 </a>
                 <br />
                 <label class="views-label">{{drawing.views}} Views</label>
