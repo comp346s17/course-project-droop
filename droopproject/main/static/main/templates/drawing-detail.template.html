@@ -1,15 +1,9 @@
 <div id="detailContainer">
     <h1 id="detailTitle" class="detail-heading">{{drawing.title}}</h1>
+    <span id=view-label-detail>{{drawing.views}} Views</span>
+    <label>Created at:</label>{{drawing.date | date: ' MMMM dd, yyyy'}}
     <br />
     <img id="detail-image" src="{{drawing.imageUrl}}">
     <br />
 
-    <!-- <div class="detail-info"> -->
-        <!-- <div class="info-block"> -->
-            <!-- <label>Metrics:</label> -->
-            <span>{{drawing.views}} Views</span>
-        <!-- </div> -->
-    <!-- </div> -->
-
-    <label>Created at:</label>{{drawing.date | date: ' MMMM dd, yyyy'}}
 </div>

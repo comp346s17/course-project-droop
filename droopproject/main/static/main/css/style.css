@@ -25,6 +25,11 @@ a:hover {
   padding: 0 10px;
 }
 
+.nav-link {
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 42px;
+}
+
 .nav-content {
   margin: 0 2%;
 }
@@ -75,28 +80,20 @@ a:hover {
 
 .drawing-title {
   font-size: 20px;
-}
-
-.like-icon {
-  font-size: 20px;
-}
-
-.gallery-drawing-container .like-icon {
-  float: right;
-}
-
-
-.like-icon-focused {
-  color: #00008b;
-  font-weight: bold;
-}
-
-.likes-label, .views-label {
-  font-size: 16px;
+  font-family: 'Eagle Lake', cursive;
 }
 
 .views-label {
   margin-left: 6px;
+  font-size: 16px;
+}
+
+#view-label-detail {
+  padding-right: 300px;
+}
+
+#detailContainer {
+  font-size: 20px;
 }
 
 .detail-info {
@@ -116,6 +113,7 @@ a:hover {
 
 .detail-heading {
     margin-bottom: 1em;
+    font-family: 'Eagle Lake', cursive;
 }
 
 #detailContainer {
@@ -125,7 +123,12 @@ a:hover {
 }
 
 #detail-image {
+    margin-top: 2em;
     margin-bottom: 2em;
+    border: 6px solid #54acea;
+    border-radius: 2%;
+    border-image: linear-gradient(to right bottom, #3acfd5, #3a4ed5);
+    border-image-slice: 1;
 }
 
 #featuredDrawings {
