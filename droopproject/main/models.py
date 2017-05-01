@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 from django.db import models
 import random
 import datetime
+from django.conf import settings
 
 
 class Drawing(models.Model):
@@ -26,7 +27,7 @@ class Drawing(models.Model):
         try:  # If imageUrl is null, default to blank screen image
             image_url = self.image.url
         except:
-            image_url = '/media/drawings/blankImage.png'
+            image_url = settings.MEDIA_URL + '/drawings/blankImage.png'
 
         return {
             'id': self.id,

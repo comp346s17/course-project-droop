@@ -9,7 +9,6 @@
     templateUrl: 'static/main/templates/home.template.html',
     controller: function($scope, DrawingsService) {
 
-
       DrawingsService.getDrawings().$promise
         .then(function(response) {
           var allDrawings = response;
@@ -70,8 +69,6 @@
   .component('drawingDetail', {
     templateUrl: 'static/main/templates/drawing-detail.template.html',
     controller: function($scope, DrawingsService, CollectionsService, $routeParams, $http) {
-
-
 
       DrawingsService.getDrawing($routeParams.id).$promise
         .then(function(response) {

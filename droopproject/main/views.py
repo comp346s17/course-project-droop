@@ -34,13 +34,13 @@ def drawingsApi(request, drawingId=None):
         if Drawing.objects.filter(id=drawingId).count() > 0:  # If drawing already exists
             drawing = getDrawing(drawingId)
         else:
-            collection = Collection.objects.get(id=collectionId)
+            collection = Collection.objects.get(id=collectionId)  # Get collection of drawing so database entry can have right collection
             drawing = Drawing(collection=collection, title=collection.title)
 
-        drawing.image = ContentFile(image_data, 'drawing.png')
+        drawing.image = ContentFile(image_data, 'drawing.png')  # file name will get a a random string concatenated to it drawing.png already exists
         drawing.updates += 1
         if is_drawing_finished(drawing):
-            drawing.date = datetime.datetime.now()
+            drawing.date = datetime.datetime.now()  # Only update time when drawing is finished and added to gallery
             drawing.finished = True
         drawing.save()
         return JsonResponse(drawing.to_json())
@@ -60,11 +60,11 @@ def getRandomUnfinishedDrawing(request):
     # First check if we should create a new drawing using a random number test
     num_unfinished_drawings = Drawing.objects.filter(finished=False).count()
 
-    if num_unfinished_drawings == 0 or random.random() <= 0.25:
+    if num_unfinished_drawings == 0 or random.random() <= 0.25:  # 25% chance of getting blank canvas
         collection = get_random_collection()
         new_drawing = Drawing(collection=collection, title=collection.title)
         return JsonResponse(new_drawing.to_json())
-    else:
+    else:  # Get random drawing from unfinished
         random_idx = random.randint(0, num_unfinished_drawings - 1)
         drawing = Drawing.objects.filter(finished=False)[random_idx]
         return JsonResponse(drawing.to_json())
@@ -77,15 +77,10 @@ def addView(request, drawingId):
     return JsonResponse(drawing.to_json())
 
 
+
+# Helper functions
 def getFinishedDrawingsByDate():
     return Drawing.objects.filter(finished=True).order_by('-date')
-
-# def getFinishedDrawingsByViews():
-#     return Drawing.objects.filter(finished=True).order_by('-views')
-
-
-
-
 
 def getDrawing(drawingId):
     return Drawing.objects.get(id=drawingId)
@@ -98,34 +93,3 @@ def get_random_collection():
 def is_drawing_finished(drawing):
     collection = drawing.collection
     return drawing.updates >= collection.numPrompts
-
-
-
-
-
-
-
-
-
-# def addLike(drawingId):
-#     drawing = Drawing.objects.get(id=drawingId)
-#     drawing.likes += 1
-#     drawing.save()
-#
-
-
-
-# def updateDrawing(drawingId, image):
-#     drawing = Drawing.objects.get(id=drawingId)
-#     drawing.updates += 1
-#     # Update Image here
-#     drawing.save()
-#
-#
-# def getCurrentDrawingPrompt(drawingId):
-#     drawing = Drawing.objects.get(id=drawingId)
-#     return Prompt.objects.filter(collectionId=drawing.CollectionId).filter(promptNum=drawing.updates)[0]  # TODO: This is kinda ugly.
-#
-# def getCurrentDrawingTitle(drawingId):
-#     drawing = Drawing.objects.get(id=drawingId)
-#     return Collection.get(id=drawing.CollectionId)
