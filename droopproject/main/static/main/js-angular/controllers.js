@@ -1,6 +1,9 @@
 (function() {
 
-  angular.module('droopApp.controllers', [])
+  angular.module('droopApp.controllers', []).config(function($httpProvider) {
+    $httpProvider.defaults.xsrfCookieName = 'csrftoken'
+    $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken'
+  })
 
   .component('home', {
     templateUrl: 'static/main/templates/home.template.html',
