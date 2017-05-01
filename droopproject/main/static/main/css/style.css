@@ -6,8 +6,13 @@ body {
   font-family: 'Quattrocento', serif;
 }
 
+a {
+  color: black;
+}
+
 a:hover {
   text-decoration: none !important;
+  color: black;
 }
 
 .navbar-nav > li > a{
