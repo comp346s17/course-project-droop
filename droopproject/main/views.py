@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.views.decorators.csrf import ensure_csrf_cookie
 import json
 from base64 import b64decode
 from django.core.files.base import ContentFile
@@ -9,7 +10,7 @@ from models import Drawing
 from models import Collection
 from models import Prompt
 
-
+@ensure_csrf_cookie
 def index(request):
     return render(request, 'main/index.html')
 
