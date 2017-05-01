@@ -47,6 +47,11 @@ a:hover {
 .home-top h1 {
   color: #ff0000;
   padding-bottom: 25px;
+  font-family: 'Eagle Lake', cursive;
+}
+
+#featuredDrawings {
+  font-family: 'Eagle Lake', cursive;
 }
 
 .home-top p {
