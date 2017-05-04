@@ -60,7 +60,7 @@ def getRandomUnfinishedDrawing(request):
     # First check if we should create a new drawing using a random number test
     num_unfinished_drawings = Drawing.objects.filter(finished=False).count()
 
-    if num_unfinished_drawings == 0 or random.random() <= 0.25:  # 25% chance of getting blank canvas
+    if num_unfinished_drawings == 0 or random.random() <= 0.20:  # 20% chance of getting blank canvas
         collection = get_random_collection()
         new_drawing = Drawing(collection=collection, title=collection.title)
         return JsonResponse(new_drawing.to_json())
