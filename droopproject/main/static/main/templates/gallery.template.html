@@ -10,7 +10,8 @@
 
 <div class="drawings-display gallery-drawings-display">
     <div class="row drawings-row">
-        <div ng-repeat="drawing in drawings | filter:{title: searchKey} | orderBy: drawingSort">
+
+        <div ng-repeat="drawing in drawings | filter: {title: searchKey} | orderBy: drawingSort">
             <div class="clearfix" ng-if="$index % 3 == 0"></div>
             <div class="col-sm-4 gallery-drawing-container">
                 <a class="drawing-title" href="#!/gallery/{{drawing.id}}">{{drawing.title}}
