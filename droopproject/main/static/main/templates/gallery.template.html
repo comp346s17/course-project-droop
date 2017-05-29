@@ -1,3 +1,4 @@
+<droop-navbar></droop-navbar>
 <div class="gallery-top">
     <span class="completed-drawings">Completed Drawings</span>
     <input class="search-input" type="text" placeholder="Search By Theme" ng-model="searchKey"/>
@@ -10,7 +11,6 @@
 
 <div class="drawings-display gallery-drawings-display">
     <div class="row drawings-row">
-
         <div ng-repeat="drawing in drawings | filter: {title: searchKey} | orderBy: drawingSort">
             <div class="clearfix" ng-if="$index % 3 == 0"></div>
             <div class="col-sm-4 gallery-drawing-container">
