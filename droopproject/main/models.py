@@ -27,7 +27,7 @@ class Drawing(models.Model):
         try:  # If imageUrl is null, default to blank screen image
             image_url = self.image.url
         except:
-            image_url = settings.MEDIA_URL + '/drawings/blankImage.png'
+            image_url = settings.MEDIA_URL + 'drawings/blankImage.png'
 
         return {
             'id': self.id,

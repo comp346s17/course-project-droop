@@ -1,12 +1,14 @@
 (function() {
 
+  STATIC_URL = 'https://droop-static-media.s3.amazonaws.com/static';
+
   angular.module('droopApp.controllers', []).config(function($httpProvider) {
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
   })
 
   .component('home', {
-    templateUrl: 'static/main/templates/home.template.html',
+    templateUrl: STATIC_URL + '/main/templates/home.template.html',
     controller: function($scope, DrawingsService) {
 
       DrawingsService.getDrawings().$promise
@@ -20,7 +22,7 @@
   })
 
   .component('drawingCanvas', {
-    templateUrl: 'static/main/templates/canvas.template.html',
+    templateUrl: STATIC_URL + '/main/templates/canvas.template.html',
     controller: function($scope, DrawingsService, $http, $location) {
 
         $http({
@@ -29,6 +31,9 @@
         }).then(function successCallback(response) {
           var drawing = response.data;
           $scope.drawing = drawing;
+          
+          $("#img")[0].setAttribute('crossOrigin', 'anonymous');
+          $("#img")[0].src = drawing.imageUrl;
 
           $http({
             method: 'GET',
@@ -55,7 +60,7 @@
           var context2 = $("#canvas2").get(0).getContext("2d");
 
           context2.drawImage(canvas, 0, 0); // Draw copy of canvas to canvas 2
-          context.clearRect(0,0, canvas.width, canvas.height); // Clear canvas
+          context.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
           context.drawImage(img, 0, 0); // Draw background to canvas
           context.drawImage(canvas2, 0, 0); // Draw original canvas back to canvas
           var dataUrl = canvas.toDataURL();
@@ -67,7 +72,7 @@
   })
 
   .component('drawingDetail', {
-    templateUrl: 'static/main/templates/drawing-detail.template.html',
+    templateUrl: STATIC_URL + '/main/templates/drawing-detail.template.html',
     controller: function($scope, DrawingsService, CollectionsService, $routeParams, $http) {
 
       DrawingsService.getDrawing($routeParams.id).$promise
@@ -86,7 +91,7 @@
   })
 
   .component('drawingGallery', {
-    templateUrl: 'static/main/templates/gallery.template.html',
+    templateUrl: STATIC_URL + '/main/templates/gallery.template.html',
     controller: function($scope, DrawingsService) {
       $scope.drawings = DrawingsService.getDrawings();
 
@@ -97,7 +102,7 @@
   })
 
   .component('droopNavbar', {
-    templateUrl: 'static/main/templates/navbar.template.html',
+    templateUrl: STATIC_URL + '/main/templates/navbar.template.html',
     controller: function($scope) {
 
 

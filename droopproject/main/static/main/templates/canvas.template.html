@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="static/main/canvas.css">
+<link rel="stylesheet" type="text/css" href="https://droop-static-media.s3.amazonaws.com/static/main/canvas.css">
 
 <droop-navbar></droop-navbar>
 <div id="controlArea">
@@ -20,12 +20,12 @@
     </div>
 </div>
 
-
-<img src="{{ drawing.imageUrl}}" data-root="{{ drawing.imageUrl}}" id="img" alt = ""/>
+<!-- ng-src="{{drawing.imageUrl}}"  -->
+<img data-root="{{drawing.imageUrl}}" id="img" alt=""/>
 <div id="canvasArea">
     <canvas id="canvas3"></canvas>
     <canvas id="canvas"></canvas>
     <canvas id="canvas2"></canvas>
 </div>
 
-<script type="text/javascript" src="static/main/canvas.js"></script>
+<script type="text/javascript" src="https://droop-static-media.s3.amazonaws.com/static/main/canvas.js"></script>
