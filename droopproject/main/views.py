@@ -36,8 +36,8 @@ def drawingsApi(request, drawingId=None):
         else:
             collection = Collection.objects.get(id=collectionId)  # Get collection of drawing so database entry can have right collection
             drawing = Drawing(collection=collection, title=collection.title)
-
-        drawing.image = ContentFile(image_data, 'drawing.png')  # file name will get a a random string concatenated to it drawing.png already exists
+        drawing_name = 'drawing.png' + str(drawingId)
+        drawing.image = ContentFile(image_data, drawing_name)
         drawing.updates += 1
         if is_drawing_finished(drawing):
             drawing.date = datetime.datetime.now()  # Only update time when drawing is finished and added to gallery
