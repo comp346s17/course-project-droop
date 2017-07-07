@@ -1,6 +1,6 @@
 var droopApp = angular.module('droopApp', ['droopApp.controllers', 'droopApp.services', 'ngRoute', 'ngResource']);
 
-droopApp.config(function($routeProvider, $httpProvider, $resourceProvider, $sceDelegateProvider) {
+droopApp.config(function($routeProvider, $httpProvider, $resourceProvider, $sceDelegateProvider, $qProvider) {
   $routeProvider.
     when('/', {
       template: '<home></home>'
@@ -19,6 +19,8 @@ droopApp.config(function($routeProvider, $httpProvider, $resourceProvider, $sceD
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
     $resourceProvider.defaults.stripTrailingSlashes = false;
+
+    $qProvider.errorOnUnhandledRejections(false);
 
     $sceDelegateProvider.resourceUrlWhitelist([
     // Allow same origin resource loads.
