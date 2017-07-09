@@ -6,6 +6,7 @@ from base64 import b64decode
 from django.core.files.base import ContentFile
 import random
 import datetime
+import uuid
 from models import Drawing
 from models import Collection
 from models import Prompt
@@ -36,7 +37,9 @@ def drawingsApi(request, drawingId=None):
         else:
             collection = Collection.objects.get(id=collectionId)  # Get collection of drawing so database entry can have right collection
             drawing = Drawing(collection=collection, title=collection.title)
-        drawing_name = 'drawing.png' + str(drawingId)
+        if drawingId is None:  # This drawingId situation is a little messed up. Should maybe assign uuid to model in the future
+            drawingId = str(uuid.uuid4())
+        drawing_name = 'drawing' + str(drawingId) + '.png'
         drawing.image = ContentFile(image_data, drawing_name)
         drawing.updates += 1
         if is_drawing_finished(drawing):
@@ -75,7 +78,6 @@ def addView(request, drawingId):
     drawing.views += 1
     drawing.save()
     return JsonResponse(drawing.to_json())
-
 
 
 # Helper functions
