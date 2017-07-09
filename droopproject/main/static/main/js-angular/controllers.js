@@ -1,6 +1,7 @@
 (function() {
 
   STATIC_URL = 'https://droop-static-media.s3.amazonaws.com/static';
+  STATIC_URL = 'droopproject/main/static';
 
   angular.module('droopApp.controllers', []).config(function($httpProvider) {
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
@@ -31,7 +32,7 @@
         }).then(function successCallback(response) {
           var drawing = response.data;
           $scope.drawing = drawing;
-          
+
           $("#img")[0].setAttribute('crossOrigin', 'anonymous');
           $("#img")[0].src = drawing.imageUrl;
 
@@ -104,7 +105,6 @@
   .component('droopNavbar', {
     templateUrl: STATIC_URL + '/main/templates/navbar.template.html',
     controller: function($scope) {
-
 
     }
   });

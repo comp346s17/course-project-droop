@@ -98,7 +98,12 @@ $(".draw-size").click(function() {
     currLineSizeButton = this.id;
 });
 
-
+$('#undo').click(function() {
+    if (clickX.length > 0) {
+        clickX.pop();
+        clickY.pop();
+    }
+});
 
 function addClick(x, y, dragging){
     //Called whenever the user clicks on the canvas adds x,y,drag and pushed color or white if erased
