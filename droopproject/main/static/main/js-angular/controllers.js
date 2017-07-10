@@ -1,7 +1,7 @@
 (function() {
 
-  STATIC_URL = 'https://droop-static-media.s3.amazonaws.com/static';
-  STATIC_URL = 'droopproject/main/static';
+  // STATIC_URL = 'https://droop-static-media.s3.amazonaws.com/static';
+  STATIC_URL = '/static';
 
   angular.module('droopApp.controllers', []).config(function($httpProvider) {
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';

@@ -34,7 +34,6 @@ var clickSize = [];
 
 //Tools
 var curTool = "marker";
-var clickTool = [];
 
 //Click locations
 var clickX = [];
@@ -100,8 +99,14 @@ $(".draw-size").click(function() {
 
 $('#undo').click(function() {
     if (clickX.length > 0) {
-        clickX.pop();
-        clickY.pop();
+        for (var i = 0; i < 5; i++) { // Adjust this value to determine how much will be undoed each time.
+            clickX.pop();
+            clickY.pop();
+            clickColor.pop();
+            clickDrag.pop();
+            clickSize.pop();
+            redraw();
+        }
     }
 });
 
