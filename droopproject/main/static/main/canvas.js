@@ -34,7 +34,6 @@ var clickSize = [];
 
 //Tools
 var curTool = "marker";
-var clickTool = [];
 
 //Click locations
 var clickX = [];
@@ -98,7 +97,18 @@ $(".draw-size").click(function() {
     currLineSizeButton = this.id;
 });
 
-
+$('#undo').click(function() {
+    if (clickX.length > 0) {
+        for (var i = 0; i < 5; i++) { // Adjust this value to determine how much will be undoed each time.
+            clickX.pop();
+            clickY.pop();
+            clickColor.pop();
+            clickDrag.pop();
+            clickSize.pop();
+            redraw();
+        }
+    }
+});
 
 function addClick(x, y, dragging){
     //Called whenever the user clicks on the canvas adds x,y,drag and pushed color or white if erased
