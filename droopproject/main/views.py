@@ -7,9 +7,7 @@ from django.core.files.base import ContentFile
 import random
 import datetime
 import uuid
-from models import Drawing
-from models import Collection
-from models import Prompt
+from main.models import Drawing, Collection, Prompt
 
 @ensure_csrf_cookie
 def index(request):

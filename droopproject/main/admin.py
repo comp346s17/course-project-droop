@@ -1,7 +1,5 @@
 from django.contrib import admin
-from models import Drawing
-from models import Collection
-from models import Prompt
+from main.models import Drawing, Collection, Prompt
 
 # Register your models here.
 admin.site.register(Drawing)
